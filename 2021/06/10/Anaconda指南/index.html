@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>Anaconda指南 | Desdemona&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Desdemona">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.4.3',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'null'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-lx@0.4.3/source/dist/css/main.min.css">
+  
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.3/source/dist/js/jquery.jside.menu.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+<div class="single">
+
+<div id="page">
+<div class="header">
+  <div id="lx-aside" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.3/source/dist/images/post_cover.min.jpeg)" data-stellar-background-ratio="0.5">
+    <div class="overlay">
+      
+      <div class="page-title">
+        <div class="avatar"><a href="/"><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/images/avatar.jpeg?raw=true" alt="Desdemona"></a></div>
+        <span>2021-06-10</span>
+        <h2>Anaconda指南</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/Anaconda%E6%8C%87%E5%8D%97/" rel="tag">Anaconda指南</a></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="一、什么是Anaconda？"><a href="#一、什么是Anaconda？" class="headerlink" title="一、什么是Anaconda？"></a>一、什么是Anaconda？</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>Anaconda（<a href="https://link.zhihu.com/?target=https://www.anaconda.com/download/%23macos">官方网站</a>）就是可以便捷获取包且对包能够进行管理，同时对环境可以统一管理的发行版本。Anaconda包含了conda、Python在内的超过180个科学包及其依赖项。</p>
+<span id="more"></span>
+
+<h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h3><p>Anaconda具有如下特点：</p>
+<p>​    ▪ 开源</p>
+<p>​    ▪ 安装过程简单</p>
+<p>​    ▪ 高性能使用Python和R语言</p>
+<p>​    ▪ 免费的社区支持</p>
+<p>其特点的实现主要基于Anaconda拥有的：</p>
+<p>​    ▪ conda包</p>
+<p>​    ▪ 环境管理器</p>
+<p>​    ▪ 1,000+开源库</p>
+<p>​    如果日常工作或学习并不必要使用1,000多个库，那么可以考虑安装Miniconda（<a href="https://link.zhihu.com/?target=https://conda.io/miniconda.html">下载界面请戳</a>），这里不过多介绍Miniconda的安装及使用。</p>
+<h3 id="3-Anaconda、conda、pip、virtualenv"><a href="#3-Anaconda、conda、pip、virtualenv" class="headerlink" title="3. Anaconda、conda、pip、virtualenv"></a>3. Anaconda、conda、pip、virtualenv</h3><h4 id="①-Anaconda"><a href="#①-Anaconda" class="headerlink" title="① Anaconda"></a>① Anaconda</h4><p>​    Anaconda是一个包含180+的科学包及其依赖项的发行版本。其包含的科学包包括：conda, numpy, scipy, ipython notebook等。</p>
+<h4 id="②-conda"><a href="#②-conda" class="headerlink" title="② conda"></a>② conda</h4><p>conda是包及其依赖项和环境的管理工具。</p>
+<h5 id="▪-适用语言："><a href="#▪-适用语言：" class="headerlink" title="▪ 适用语言："></a>▪ 适用语言：</h5><p>​            Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
+<h5 id="▪-适用平台："><a href="#▪-适用平台：" class="headerlink" title="▪ 适用平台："></a>▪ 适用平台：</h5><p>​            Windows, macOS, Linux</p>
+<h5 id="▪-用途："><a href="#▪-用途：" class="headerlink" title="▪ 用途："></a>▪ 用途：</h5><p>​        ① 快速安装、运行和升级包及其依赖项。</p>
+<p>​        ② 在计算机中便捷地创建、保存、加载和切换环境。</p>
+<h4 id="③-pip"><a href="#③-pip" class="headerlink" title="③ pip"></a><strong>③ pip</strong></h4><p><strong>pip是用于安装和管理软件包的包管理器。</strong></p>
+<p>​    ▪ pip编写语言：Python。</p>
+<p>​    ▪ Python中默认安装的版本：</p>
+<p>​        ① Python 2.7.9及后续版本：默认安装，命令为 <strong>pip</strong></p>
+<p>​        ② Python 3.4及后续版本：默认安装，命令为 <strong>pip3</strong></p>
+<h4 id="④-virtualenv"><a href="#④-virtualenv" class="headerlink" title="④ virtualenv"></a><strong>④ virtualenv</strong></h4><p><strong>virtualenv是用于创建一个独立的Python环境的工具。</strong></p>
+<p>​    virtualenv将会为它自己的安装目录创建一个环境，这并不与其他virtualenv环境共享库；同时也可以选择性地不连接已安装的全局库。</p>
+<h4 id="⑤-pip-与-conda-比较"><a href="#⑤-pip-与-conda-比较" class="headerlink" title="⑤ pip 与 conda 比较"></a><strong>⑤ pip 与 conda 比较</strong></h4><h5 id="a-依赖项检查"><a href="#a-依赖项检查" class="headerlink" title="a. 依赖项检查"></a>a. 依赖项检查</h5><p><strong>▪ pip：</strong></p>
+<p>​    ① 不一定会展示所需其他依赖包。</p>
+<p>​    ② 安装包时或许会直接忽略依赖项而安装，仅在结果中提示错误。</p>
+<p><strong>▪ conda：</strong></p>
+<p>​    ① 列出所需其他依赖包。</p>
+<p>​    ② 安装包时自动安装其依赖项。</p>
+<p>​    ③ 可以便捷地在包的不同版本中自由切换。 </p>
+<h5 id="b-环境管理"><a href="#b-环境管理" class="headerlink" title="b.环境管理"></a>b.环境管理</h5><p>​    ▪ <strong>pip</strong>：维护多个环境难度较大。</p>
+<p>​    ▪ <strong>conda</strong>：比较方便地在不同环境之间进行切换，环境管理较为简单。</p>
+<h5 id="c-对系统自带Python的影响"><a href="#c-对系统自带Python的影响" class="headerlink" title="c. 对系统自带Python的影响"></a>c. 对系统自带Python的影响</h5><p>​    ▪ <strong>pip</strong>：在系统自带Python中包的更新&#x2F;回退版本&#x2F;卸载将影响其他程序。</p>
+<p>​    ▪ <strong>conda</strong>：不会影响系统自带Python。</p>
+<h5 id="d-适用语言"><a href="#d-适用语言" class="headerlink" title="d. 适用语言"></a>d. 适用语言</h5><p>​    ▪ pip：仅适用于Python。</p>
+<p>​    ▪ conda：适用于Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
+<h2 id="二、Windows安装"><a href="#二、Windows安装" class="headerlink" title="二、Windows安装"></a>二、Windows安装</h2><h3 id="1-安装网址"><a href="#1-安装网址" class="headerlink" title="1.安装网址"></a>1.安装网址</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.anaconda.com/">官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华大学提供了镜像地址</a> 这个会下的更快一些</li>
+</ul>
+<h3 id="2-下载注意点"><a href="#2-下载注意点" class="headerlink" title="2.下载注意点"></a>2.下载注意点</h3><p>​    ① 如果下载有阻碍暂时地关闭杀毒软件，并在安装程序完成之后再打开。</p>
+<p>​    ② 如果在安装时选择了“为所有用户安装”，则卸载Anaconda然后重新安装，只为“我这个用户”安装。</p>
+<p>​    ③ 目标路径中不能含有空格，同时不能是<strong>unicode</strong>编码。</p>
+<p>​    ④ 除非被要求以管理员权限安装，否则不要以管理员身份安装。</p>
+<h3 id="3-证明安装成功"><a href="#3-证明安装成功" class="headerlink" title="3.证明安装成功"></a>3.证明安装成功</h3><p>​    ① “开始 → Anaconda3（64-bit）→ Anaconda Navigator”，若可以成功启动Anaconda Navigator则说明安装成功。</p>
+<p>​    ② “开始 → Anaconda3（64-bit）→ 右键点击Anaconda Prompt → 以管理员身份运行”，在Anaconda Prompt中输入 conda list ，可以查看已经安装的包名和版本号。若结果可以正常显示，则说明安装成功。</p>
+<h2 id="三、管理conda的情况"><a href="#三、管理conda的情况" class="headerlink" title="三、管理conda的情况"></a>三、管理conda的情况</h2><p>（Windows用“Anaconda Prompt”打开，Macos和Linux用“Terminal”打开）</p>
+<h3 id="1-验证conda已被安装"><a href="#1-验证conda已被安装" class="headerlink" title="1. 验证conda已被安装"></a><strong>1. 验证conda已被安装</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-更新conda至最新版本"><a href="#2-更新conda至最新版本" class="headerlink" title="2. 更新conda至最新版本"></a><strong>2. 更新conda至最新版本</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-查看conda帮助信息"><a href="#3-查看conda帮助信息" class="headerlink" title="3. 查看conda帮助信息"></a><strong>3. 查看conda帮助信息</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda --<span class="built_in">help</span></span><br><span class="line">conda -h</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-卸载conda"><a href="#4-卸载conda" class="headerlink" title="4. 卸载conda"></a><strong>4. 卸载conda</strong></h3><h4 id="①-Linux-或-macOS"><a href="#①-Linux-或-macOS" class="headerlink" title="① Linux 或 macOS"></a><strong>① Linux 或 macOS</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf ~/anaconda2</span><br><span class="line"><span class="built_in">rm</span> -rf ~/anaconda3</span><br></pre></td></tr></table></figure>
+
+<p>即删除Anaconda的安装目录。根据安装的Anaconda版本选择相应的卸载命令。</p>
+<h4 id="②-Windows"><a href="#②-Windows" class="headerlink" title="② Windows"></a><strong>② Windows</strong></h4><p>​    控制面板 → 添加或删除程序 → 选择“Python X.X (Anaconda)” → 点击“删除程序”</p>
+<ul>
+<li><p>注意：</p>
+<p>① Python X.X：即Python的版本，如：Python 3.6。</p>
+<p>② Windows 10的删除有所不同。</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda clean --all -y</span><br></pre></td></tr></table></figure>
+
+<p>​            或者找找到anaconda安装的文件夹，找到Uninstall-Anaconda.exe，左键双击运行按步骤卸载。</p>
+<h2 id="四、管理conda的包"><a href="#四、管理conda的包" class="headerlink" title="四、管理conda的包"></a>四、管理conda的包</h2><h3 id="1-在默认环境下更新所有的包"><a href="#1-在默认环境下更新所有的包" class="headerlink" title="1.在默认环境下更新所有的包"></a>1.在默认环境下更新所有的包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda upgrade --all</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装包"><a href="#2-安装包" class="headerlink" title="2.安装包"></a>2.安装包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install package_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-指定所需的包版本"><a href="#3-指定所需的包版本" class="headerlink" title="3.指定所需的包版本"></a>3.指定所需的包版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install [pakage]=[version]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove package_name  </span><br></pre></td></tr></table></figure>
+
+<h3 id="5-更新包"><a href="#5-更新包" class="headerlink" title="5.更新包"></a>5.更新包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update package_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-尝试使用某个包"><a href="#6-尝试使用某个包" class="headerlink" title="6.尝试使用某个包"></a>6.尝试使用某个包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search search_pakage</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-查找可供安装的包版本"><a href="#7-查找可供安装的包版本" class="headerlink" title="7.查找可供安装的包版本"></a>7.查找可供安装的包版本</h3><h4 id="①-精确查找"><a href="#①-精确查找" class="headerlink" title="① 精确查找"></a>① 精确查找</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search --full-name [package_full_name]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>注意：</p>
+<p>① –full-name 为精确查找的参数。</p>
+<p>② [package_full_name] 是被查找包的全名。</p>
+</li>
+<li><p>例如 conda search –full-name python即查找全名为“python”的包有哪些版本可供安装。</p>
+</li>
+</ul>
+<h4 id="②-模糊查找"><a href="#②-模糊查找" class="headerlink" title="② 模糊查找"></a>② 模糊查找</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search [text]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>text是查找含有此字段的包名</li>
+<li>例如conda search py即查找含有“py”字段的包</li>
+</ul>
+<h3 id="8-获取当前环境中已安装的包信息"><a href="#8-获取当前环境中已安装的包信息" class="headerlink" title="8.获取当前环境中已安装的包信息"></a>8.获取当前环境中已安装的包信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-找不到包时在官网下载"><a href="#9-找不到包时在官网下载" class="headerlink" title="9.找不到包时在官网下载"></a>9.找不到包时在官网下载</h3><p><a target="_blank" rel="noopener" href="http://anaconda.org/">官网地址</a></p>
+<h2 id="五、管理conda环境"><a href="#五、管理conda环境" class="headerlink" title="五、管理conda环境"></a>五、管理conda环境</h2><h3 id="1-新建环境"><a href="#1-新建环境" class="headerlink" title="1. 新建环境"></a>1. 新建环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n [env_name] [list of packages] conda create -n [version] </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-n env_name 设置环境的名称（-n 是指名称）</li>
+<li>list of packages 是要安装在环境中的包的列表</li>
+<li>version 创建具有特定 Python 版本的环境</li>
+</ul>
+<h3 id="2-进入环境"><a href="#2-进入环境" class="headerlink" title="2.进入环境"></a>2.进入环境</h3><h4 id="①Windows环境"><a href="#①Windows环境" class="headerlink" title="①Windows环境"></a>①Windows环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate [my_env]</span><br></pre></td></tr></table></figure>
+
+<h4 id="②OSX-x2F-Linux环境"><a href="#②OSX-x2F-Linux环境" class="headerlink" title="②OSX&#x2F;Linux环境"></a>②OSX&#x2F;Linux环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> activate [my_env]</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-离开环境"><a href="#3-离开环境" class="headerlink" title="3.离开环境"></a>3.离开环境</h3><h4 id="①Windows环境-1"><a href="#①Windows环境-1" class="headerlink" title="①Windows环境"></a>①Windows环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> deactivate</span><br></pre></td></tr></table></figure>
+
+<h4 id="②OSX-x2F-Linux环境-1"><a href="#②OSX-x2F-Linux环境-1" class="headerlink" title="②OSX&#x2F;Linux环境"></a>②OSX&#x2F;Linux环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-查看环境"><a href="#4-查看环境" class="headerlink" title="4.查看环境"></a>4.查看环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info -econda <span class="built_in">env</span> list</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-删除环境"><a href="#5-删除环境" class="headerlink" title="5.删除环境"></a>5.删除环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">env</span> remove -n [env_name]</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-复制环境"><a href="#6-复制环境" class="headerlink" title="6.复制环境"></a>6.复制环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name [new_env_name] --<span class="built_in">clone</span> [old_env_name] </span><br></pre></td></tr></table></figure>
+
+<h3 id="7-通过yml文件在环境中迁入迁出"><a href="#7-通过yml文件在环境中迁入迁出" class="headerlink" title="7.通过yml文件在环境中迁入迁出"></a>7.通过yml文件在环境中迁入迁出</h3><p>环境迁移导出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; environment.yaml</span><br></pre></td></tr></table></figure>
+
+<p>在新环境中导入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">env</span> create -f environment.yaml</span><br></pre></td></tr></table></figure>
+
+<p>create完后，update一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">env</span> update -f environment.yaml</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、参考资料"><a href="#六、参考资料" class="headerlink" title="六、参考资料"></a>六、参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/WangYiqiang/p/12257671.html">https://www.cnblogs.com/WangYiqiang/p/12257671.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52127512">https://zhuanlan.zhihu.com/p/52127512</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zahidzqj/article/details/88745559">https://blog.csdn.net/zahidzqj/article/details/88745559</a></p>
+<p>完结撒花～</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.3/source/dist/images/footer-l.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2022/03/08/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>区块链学习笔记</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.3/source/dist/images/footer-r.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>No older post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2022.<a href="/">Desdemona's Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button" title="menu">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button>
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/images/avatar.jpeg?raw=true" alt="Desdemona"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>Desdemona</p>
+          <span class="tagline">Have a nice day! ;-)</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.3/source/dist/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+
+
+</body>
+</html>
