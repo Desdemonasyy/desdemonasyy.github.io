@@ -233,6 +233,9 @@
 <h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><p>领导者节点拥有绝对权限，并允许强监管节点参与，其性能高，资源消耗低。</p>
 <h4 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h4><p>所有节点一般有线下准入机制，但选举过程中不允许有作恶节点，不具备容错性。 </p>
 ]]></content>
+      <categories>
+        <category>区块链</category>
+      </categories>
       <tags>
         <tag>区块链学习笔记</tag>
       </tags>
@@ -377,6 +380,9 @@
 <p><a href="https://blog.csdn.net/zahidzqj/article/details/88745559">https://blog.csdn.net/zahidzqj/article/details/88745559</a></p>
 <p>完结撒花～</p>
 ]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
       <tags>
         <tag>Anaconda指南</tag>
       </tags>
