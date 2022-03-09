@@ -401,8 +401,6 @@
 <p>代码示例：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">print</span> (base64.b32encode(<span class="string">b&quot;flag&quot;</span>))</span><br><span class="line"><span class="built_in">print</span> (base64.b32decode(<span class="string">b&quot;MZWGCZY=&quot;</span>))</span><br></pre></td></tr></table></figure>
 
-
-
 <h4 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h4><p>字符集：a-z,A-z,0-9,+,&#x2F;共64个以及补位的“&#x3D;”</p>
 <p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Base64%E7%BC%96%E7%A0%81%E8%A1%A8.png?raw=true"></p>
 <p>代码示例 :</p>
@@ -671,7 +669,7 @@
 <h4 id="与佛论禅"><a href="#与佛论禅" class="headerlink" title="与佛论禅"></a>与佛论禅</h4><p>密文以”佛曰：如是我闻：”开头，密文一般是与关佛经的汉字</p>
 <p> <strong>在线工具：</strong></p>
 <p><a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx">与佛论禅</a></p>
-<h4 id="新与佛论禅"><a href="#新与佛论禅" class="headerlink" title="新与佛论禅"></a>新与佛论禅</h4><p>以“新佛曰：”开头</p>
+<h4 id="新与佛论禅"><a href="#新与佛论禅" class="headerlink" title="新与佛论禅"></a>新与佛论禅</h4><p>以“新佛曰：”开头的文字。</p>
 <p><strong>在线工具：</strong></p>
 <p><a href="http://hi.pcmoe.net/buddha.html">http://hi.pcmoe.net/buddha.html</a></p>
 <h4 id="当铺密码"><a href="#当铺密码" class="headerlink" title="当铺密码"></a>当铺密码</h4><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E5%BD%93%E9%93%BA%E5%AF%86%E7%A0%81.jpg?raw=true"></p>
