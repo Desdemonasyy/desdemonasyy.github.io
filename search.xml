@@ -1,6 +1,449 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Anaconda指南</title>
+    <url>/2021/06/10/Anaconda%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h2 id="一、什么是Anaconda？"><a href="#一、什么是Anaconda？" class="headerlink" title="一、什么是Anaconda？"></a>一、什么是Anaconda？</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>Anaconda（<a href="https://link.zhihu.com/?target=https://www.anaconda.com/download/%23macos">官方网站</a>）就是可以便捷获取包且对包能够进行管理，同时对环境可以统一管理的发行版本。Anaconda包含了conda、Python在内的超过180个科学包及其依赖项。</p>
+<span id="more"></span>
+
+<h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h3><p>Anaconda具有如下特点：</p>
+<p>​    ▪ 开源</p>
+<p>​    ▪ 安装过程简单</p>
+<p>​    ▪ 高性能使用Python和R语言</p>
+<p>​    ▪ 免费的社区支持</p>
+<p>其特点的实现主要基于Anaconda拥有的：</p>
+<p>​    ▪ conda包</p>
+<p>​    ▪ 环境管理器</p>
+<p>​    ▪ 1,000+开源库</p>
+<p>​    如果日常工作或学习并不必要使用1,000多个库，那么可以考虑安装Miniconda（<a href="https://link.zhihu.com/?target=https://conda.io/miniconda.html">下载界面请戳</a>），这里不过多介绍Miniconda的安装及使用。</p>
+<h3 id="3-Anaconda、conda、pip、virtualenv"><a href="#3-Anaconda、conda、pip、virtualenv" class="headerlink" title="3. Anaconda、conda、pip、virtualenv"></a>3. Anaconda、conda、pip、virtualenv</h3><h4 id="①-Anaconda"><a href="#①-Anaconda" class="headerlink" title="① Anaconda"></a>① Anaconda</h4><p>​    Anaconda是一个包含180+的科学包及其依赖项的发行版本。其包含的科学包包括：conda, numpy, scipy, ipython notebook等。</p>
+<h4 id="②-conda"><a href="#②-conda" class="headerlink" title="② conda"></a>② conda</h4><p>conda是包及其依赖项和环境的管理工具。</p>
+<h5 id="▪-适用语言："><a href="#▪-适用语言：" class="headerlink" title="▪ 适用语言："></a>▪ 适用语言：</h5><p>​            Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
+<h5 id="▪-适用平台："><a href="#▪-适用平台：" class="headerlink" title="▪ 适用平台："></a>▪ 适用平台：</h5><p>​            Windows, macOS, Linux</p>
+<h5 id="▪-用途："><a href="#▪-用途：" class="headerlink" title="▪ 用途："></a>▪ 用途：</h5><p>​        ① 快速安装、运行和升级包及其依赖项。</p>
+<p>​        ② 在计算机中便捷地创建、保存、加载和切换环境。</p>
+<h4 id="③-pip"><a href="#③-pip" class="headerlink" title="③ pip"></a><strong>③ pip</strong></h4><p><strong>pip是用于安装和管理软件包的包管理器。</strong></p>
+<p>​    ▪ pip编写语言：Python。</p>
+<p>​    ▪ Python中默认安装的版本：</p>
+<p>​        ① Python 2.7.9及后续版本：默认安装，命令为 <strong>pip</strong></p>
+<p>​        ② Python 3.4及后续版本：默认安装，命令为 <strong>pip3</strong></p>
+<h4 id="④-virtualenv"><a href="#④-virtualenv" class="headerlink" title="④ virtualenv"></a><strong>④ virtualenv</strong></h4><p><strong>virtualenv是用于创建一个独立的Python环境的工具。</strong></p>
+<p>​    virtualenv将会为它自己的安装目录创建一个环境，这并不与其他virtualenv环境共享库；同时也可以选择性地不连接已安装的全局库。</p>
+<h4 id="⑤-pip-与-conda-比较"><a href="#⑤-pip-与-conda-比较" class="headerlink" title="⑤ pip 与 conda 比较"></a><strong>⑤ pip 与 conda 比较</strong></h4><h5 id="a-依赖项检查"><a href="#a-依赖项检查" class="headerlink" title="a. 依赖项检查"></a>a. 依赖项检查</h5><p><strong>▪ pip：</strong></p>
+<p>​    ① 不一定会展示所需其他依赖包。</p>
+<p>​    ② 安装包时或许会直接忽略依赖项而安装，仅在结果中提示错误。</p>
+<p><strong>▪ conda：</strong></p>
+<p>​    ① 列出所需其他依赖包。</p>
+<p>​    ② 安装包时自动安装其依赖项。</p>
+<p>​    ③ 可以便捷地在包的不同版本中自由切换。 </p>
+<h5 id="b-环境管理"><a href="#b-环境管理" class="headerlink" title="b.环境管理"></a>b.环境管理</h5><p>​    ▪ <strong>pip</strong>：维护多个环境难度较大。</p>
+<p>​    ▪ <strong>conda</strong>：比较方便地在不同环境之间进行切换，环境管理较为简单。</p>
+<h5 id="c-对系统自带Python的影响"><a href="#c-对系统自带Python的影响" class="headerlink" title="c. 对系统自带Python的影响"></a>c. 对系统自带Python的影响</h5><p>​    ▪ <strong>pip</strong>：在系统自带Python中包的更新&#x2F;回退版本&#x2F;卸载将影响其他程序。</p>
+<p>​    ▪ <strong>conda</strong>：不会影响系统自带Python。</p>
+<h5 id="d-适用语言"><a href="#d-适用语言" class="headerlink" title="d. 适用语言"></a>d. 适用语言</h5><p>​    ▪ pip：仅适用于Python。</p>
+<p>​    ▪ conda：适用于Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
+<h2 id="二、Windows安装"><a href="#二、Windows安装" class="headerlink" title="二、Windows安装"></a>二、Windows安装</h2><h3 id="1-安装网址"><a href="#1-安装网址" class="headerlink" title="1.安装网址"></a>1.安装网址</h3><ul>
+<li><a href="https://www.anaconda.com/">官网</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华大学提供了镜像地址</a> 这个会下的更快一些</li>
+</ul>
+<h3 id="2-下载注意点"><a href="#2-下载注意点" class="headerlink" title="2.下载注意点"></a>2.下载注意点</h3><p>​    ① 如果下载有阻碍暂时地关闭杀毒软件，并在安装程序完成之后再打开。</p>
+<p>​    ② 如果在安装时选择了“为所有用户安装”，则卸载Anaconda然后重新安装，只为“我这个用户”安装。</p>
+<p>​    ③ 目标路径中不能含有空格，同时不能是<strong>unicode</strong>编码。</p>
+<p>​    ④ 除非被要求以管理员权限安装，否则不要以管理员身份安装。</p>
+<h3 id="3-证明安装成功"><a href="#3-证明安装成功" class="headerlink" title="3.证明安装成功"></a>3.证明安装成功</h3><p>​    ① “开始 → Anaconda3（64-bit）→ Anaconda Navigator”，若可以成功启动Anaconda Navigator则说明安装成功。</p>
+<p>​    ② “开始 → Anaconda3（64-bit）→ 右键点击Anaconda Prompt → 以管理员身份运行”，在Anaconda Prompt中输入 conda list ，可以查看已经安装的包名和版本号。若结果可以正常显示，则说明安装成功。</p>
+<h2 id="三、管理conda的情况"><a href="#三、管理conda的情况" class="headerlink" title="三、管理conda的情况"></a>三、管理conda的情况</h2><p>（Windows用“Anaconda Prompt”打开，Macos和Linux用“Terminal”打开）</p>
+<h3 id="1-验证conda已被安装"><a href="#1-验证conda已被安装" class="headerlink" title="1. 验证conda已被安装"></a><strong>1. 验证conda已被安装</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-更新conda至最新版本"><a href="#2-更新conda至最新版本" class="headerlink" title="2. 更新conda至最新版本"></a><strong>2. 更新conda至最新版本</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-查看conda帮助信息"><a href="#3-查看conda帮助信息" class="headerlink" title="3. 查看conda帮助信息"></a><strong>3. 查看conda帮助信息</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda --<span class="built_in">help</span></span><br><span class="line">conda -h</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-卸载conda"><a href="#4-卸载conda" class="headerlink" title="4. 卸载conda"></a><strong>4. 卸载conda</strong></h3><h4 id="①-Linux-或-macOS"><a href="#①-Linux-或-macOS" class="headerlink" title="① Linux 或 macOS"></a><strong>① Linux 或 macOS</strong></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf ~/anaconda2</span><br><span class="line"><span class="built_in">rm</span> -rf ~/anaconda3</span><br></pre></td></tr></table></figure>
+
+<p>即删除Anaconda的安装目录。根据安装的Anaconda版本选择相应的卸载命令。</p>
+<h4 id="②-Windows"><a href="#②-Windows" class="headerlink" title="② Windows"></a><strong>② Windows</strong></h4><p>​    控制面板 → 添加或删除程序 → 选择“Python X.X (Anaconda)” → 点击“删除程序”</p>
+<ul>
+<li><p>注意：</p>
+<p>① Python X.X：即Python的版本，如：Python 3.6。</p>
+<p>② Windows 10的删除有所不同。</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda clean --all -y</span><br></pre></td></tr></table></figure>
+
+<p>​            或者找找到anaconda安装的文件夹，找到Uninstall-Anaconda.exe，左键双击运行按步骤卸载。</p>
+<h2 id="四、管理conda的包"><a href="#四、管理conda的包" class="headerlink" title="四、管理conda的包"></a>四、管理conda的包</h2><h3 id="1-在默认环境下更新所有的包"><a href="#1-在默认环境下更新所有的包" class="headerlink" title="1.在默认环境下更新所有的包"></a>1.在默认环境下更新所有的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda upgrade --all</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装包"><a href="#2-安装包" class="headerlink" title="2.安装包"></a>2.安装包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install package_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-指定所需的包版本"><a href="#3-指定所需的包版本" class="headerlink" title="3.指定所需的包版本"></a>3.指定所需的包版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install [pakage]=[version]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda remove package_name  </span><br></pre></td></tr></table></figure>
+
+<h3 id="5-更新包"><a href="#5-更新包" class="headerlink" title="5.更新包"></a>5.更新包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda update package_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-尝试使用某个包"><a href="#6-尝试使用某个包" class="headerlink" title="6.尝试使用某个包"></a>6.尝试使用某个包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda search search_pakage</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-查找可供安装的包版本"><a href="#7-查找可供安装的包版本" class="headerlink" title="7.查找可供安装的包版本"></a>7.查找可供安装的包版本</h3><h4 id="①-精确查找"><a href="#①-精确查找" class="headerlink" title="① 精确查找"></a>① 精确查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda search --full-name [package_full_name]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>注意：</p>
+<p>① –full-name 为精确查找的参数。</p>
+<p>② [package_full_name] 是被查找包的全名。</p>
+</li>
+<li><p>例如 conda search –full-name python即查找全名为“python”的包有哪些版本可供安装。</p>
+</li>
+</ul>
+<h4 id="②-模糊查找"><a href="#②-模糊查找" class="headerlink" title="② 模糊查找"></a>② 模糊查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda search [text]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>text是查找含有此字段的包名</li>
+<li>例如conda search py即查找含有“py”字段的包</li>
+</ul>
+<h3 id="8-获取当前环境中已安装的包信息"><a href="#8-获取当前环境中已安装的包信息" class="headerlink" title="8.获取当前环境中已安装的包信息"></a>8.获取当前环境中已安装的包信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-找不到包时在官网下载"><a href="#9-找不到包时在官网下载" class="headerlink" title="9.找不到包时在官网下载"></a>9.找不到包时在官网下载</h3><p><a href="http://anaconda.org/">官网地址</a></p>
+<h2 id="五、管理conda环境"><a href="#五、管理conda环境" class="headerlink" title="五、管理conda环境"></a>五、管理conda环境</h2><h3 id="1-新建环境"><a href="#1-新建环境" class="headerlink" title="1. 新建环境"></a>1. 新建环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create -n [env_name] [list of packages] conda create -n [version] </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-n env_name 设置环境的名称（-n 是指名称）</li>
+<li>list of packages 是要安装在环境中的包的列表</li>
+<li>version 创建具有特定 Python 版本的环境</li>
+</ul>
+<h3 id="2-进入环境"><a href="#2-进入环境" class="headerlink" title="2.进入环境"></a>2.进入环境</h3><h4 id="①Windows环境"><a href="#①Windows环境" class="headerlink" title="①Windows环境"></a>①Windows环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">activate [my_env]</span><br></pre></td></tr></table></figure>
+
+<h4 id="②OSX-x2F-Linux环境"><a href="#②OSX-x2F-Linux环境" class="headerlink" title="②OSX&#x2F;Linux环境"></a>②OSX&#x2F;Linux环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> activate [my_env]</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-离开环境"><a href="#3-离开环境" class="headerlink" title="3.离开环境"></a>3.离开环境</h3><h4 id="①Windows环境-1"><a href="#①Windows环境-1" class="headerlink" title="①Windows环境"></a>①Windows环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> deactivate</span><br></pre></td></tr></table></figure>
+
+<h4 id="②OSX-x2F-Linux环境-1"><a href="#②OSX-x2F-Linux环境-1" class="headerlink" title="②OSX&#x2F;Linux环境"></a>②OSX&#x2F;Linux环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-查看环境"><a href="#4-查看环境" class="headerlink" title="4.查看环境"></a>4.查看环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda info -econda <span class="built_in">env</span> list</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-删除环境"><a href="#5-删除环境" class="headerlink" title="5.删除环境"></a>5.删除环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> remove -n [env_name]</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-复制环境"><a href="#6-复制环境" class="headerlink" title="6.复制环境"></a>6.复制环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create --name [new_env_name] --<span class="built_in">clone</span> [old_env_name] </span><br></pre></td></tr></table></figure>
+
+<h3 id="7-通过yml文件在环境中迁入迁出"><a href="#7-通过yml文件在环境中迁入迁出" class="headerlink" title="7.通过yml文件在环境中迁入迁出"></a>7.通过yml文件在环境中迁入迁出</h3><p>环境迁移导出：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; environment.yaml</span><br></pre></td></tr></table></figure>
+
+<p>在新环境中导入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> create -f environment.yaml</span><br></pre></td></tr></table></figure>
+
+<p>create完后，update一下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> update -f environment.yaml</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、参考资料"><a href="#六、参考资料" class="headerlink" title="六、参考资料"></a>六、参考资料</h2><p><a href="https://www.cnblogs.com/WangYiqiang/p/12257671.html">https://www.cnblogs.com/WangYiqiang/p/12257671.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/52127512">https://zhuanlan.zhihu.com/p/52127512</a></p>
+<p><a href="https://blog.csdn.net/zahidzqj/article/details/88745559">https://blog.csdn.net/zahidzqj/article/details/88745559</a></p>
+<p>完结撒花～</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>Anaconda指南</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编码总结</title>
+    <url>/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="Base家族"><a href="#Base家族" class="headerlink" title="Base家族"></a>Base家族</h2><h3 id="Base10（十进制）"><a href="#Base10（十进制）" class="headerlink" title="Base10（十进制）"></a>Base10（十进制）</h3><h3 id="Base2（二进制）"><a href="#Base2（二进制）" class="headerlink" title="Base2（二进制）"></a>Base2（二进制）</h3><h3 id="Base16（十六进制）"><a href="#Base16（十六进制）" class="headerlink" title="Base16（十六进制）"></a>Base16（十六进制）</h3><p>字符集：0-9，A-F，共16个</p>
+<p>代码示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">print</span> (base64.b16encode(<span class="string">b&quot;flag&quot;</span>))</span><br><span class="line"><span class="built_in">print</span> (base64.b16decode(<span class="string">b&quot;666C6167&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="Base32"><a href="#Base32" class="headerlink" title="Base32"></a>Base32</h3><p>字符集：A-Z，2-7，共32个以及补位的“&#x3D;”</p>
+<p><img src="/.com//base32%E7%BC%96%E7%A0%81%E8%A1%A8.png"></p>
+<p>代码示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">print</span> (base64.b32encode(<span class="string">b&quot;flag&quot;</span>))</span><br><span class="line"><span class="built_in">print</span> (base64.b32decode(<span class="string">b&quot;MZWGCZY=&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h3><p>字符集：a-z,A-z,0-9,+,&#x2F;共64个以及补位的“&#x3D;”</p>
+<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Base64%E7%BC%96%E7%A0%81%E8%A1%A8.png?raw=true"></p>
+<p>代码示例 :</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="built_in">print</span> (codecs.encode(<span class="string">b&quot;flag&quot;</span>,<span class="string">&quot;base64&quot;</span>)[:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span> (codecs.decode(<span class="string">b&quot;ZmxhZw==&quot;</span>,<span class="string">&quot;base64&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">print</span> (base64.b64encode(<span class="string">b&quot;flag&quot;</span>))</span><br><span class="line"><span class="built_in">print</span> (base64.b64decode(<span class="string">b&quot;ZmxhZw==&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="以flag为例来讲解一下这些进制："><a href="#以flag为例来讲解一下这些进制：" class="headerlink" title="以flag为例来讲解一下这些进制："></a>以flag为例来讲解一下这些进制：</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>f</th>
+<th>l</th>
+<th>a</th>
+<th>g</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base10</td>
+<td>102</td>
+<td>108</td>
+<td>97</td>
+<td>103</td>
+</tr>
+<tr>
+<td>Base2</td>
+<td>01100110</td>
+<td>01101100</td>
+<td>01100001</td>
+<td>01100111</td>
+</tr>
+<tr>
+<td>Base16</td>
+<td>66</td>
+<td>6C</td>
+<td>61</td>
+<td>67</td>
+</tr>
+</tbody></table>
+<p>Base32：<br>$$<br>32&#x3D;2^5<br>$$<br>所以应该为五个一组：</p>
+<p>01100 11001 10110 00110 00010 11001 11</p>
+<p>后面缺了的位数用0补上，最后应该为：</p>
+<p>01100 11001 10110 00110 00010 11001 11000</p>
+<p>对应的字符如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>二进制</th>
+<th>01100</th>
+<th>11001</th>
+<th>10110</th>
+<th>00110</th>
+<th>00010</th>
+<th>11001</th>
+<th>11000</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>十进制</td>
+<td>12</td>
+<td>25</td>
+<td>22</td>
+<td>6</td>
+<td>2</td>
+<td>25</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Base32</td>
+<td>M</td>
+<td>Z</td>
+<td>W</td>
+<td>G</td>
+<td>C</td>
+<td>Z</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+<p>此时不是40（5、8的最小公倍数）的倍数，所以需要补一个“&#x3D;”，一个“&#x3D;”相当于一个组（5位）</p>
+<p>Base64：<br>$$<br>64&#x3D;2^6<br>$$<br>所以应该分为6个一组：</p>
+<p>011001 100110 110001 100001 011001 11</p>
+<p>后面缺了的位数用0补上，最后应该为：</p>
+<p>011001 100110 110001 100001 011001 110000</p>
+<p>对应的字符如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>二进制</th>
+<th>011001</th>
+<th>100110</th>
+<th>110001</th>
+<th>100001</th>
+<th>011001</th>
+<th>110000</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>十进制</td>
+<td>25</td>
+<td>38</td>
+<td>49</td>
+<td>33</td>
+<td>25</td>
+<td>48</td>
+</tr>
+<tr>
+<td>Base64</td>
+<td>Z</td>
+<td>m</td>
+<td>x</td>
+<td>h</td>
+<td>Z</td>
+<td>w</td>
+</tr>
+</tbody></table>
+<p>此时不是24（6、8的最小公倍数）的倍数，所以应该进行补位，这里补（48-36）÷6&#x3D;2，即两个”&#x3D;“</p>
+<h3 id="Base58"><a href="#Base58" class="headerlink" title="Base58"></a>Base58</h3><p>base_58 是用于 Bitcoin 中使用的一种独特的编码方式，主要用于产生Bitcoin的钱包地址。</p>
+<p>Base58遵循Base64类似的过程，但不同于Base64的是，编码表少了数字0，大写字母I，O，小写字母 l (这个是L），以及符号+和&#x2F;。</p>
+<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Base58%E7%BC%96%E7%A0%81%E8%A1%A8.png?raw=true"></p>
+<h3 id="Base62"><a href="#Base62" class="headerlink" title="Base62"></a>Base62</h3><p>Base62遵循Base64类似的过程，但不同于Base64的是，编码表少了符号+和&#x2F;。</p>
+<h3 id="Base85"><a href="#Base85" class="headerlink" title="Base85"></a>Base85</h3><p>Base85 也称为Ascii85，是Paul E. Rutter为btoa实用程序开发的一种二进制文本编码形式。通过使用五个ASCII字符来表示四个字节的二进制数据，它比UUENCODE或Base64使用四个字符来表示三个字节的数据更有效。</p>
+<p>以flag举例：</p>
+<table>
+<thead>
+<tr>
+<th>编码类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base85</td>
+<td>Ao(mg</td>
+</tr>
+<tr>
+<td>Base64</td>
+<td>ZmxhZw&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>UUENCODE</td>
+<td>$9FQA9P&#96;&#96;</td>
+</tr>
+</tbody></table>
+<h3 id="Base91"><a href="#Base91" class="headerlink" title="Base91"></a>Base91</h3><p>base91需要91个字符来表示用ASCII编码的二进制数据。</p>
+<h3 id="Base100（emoji编码）"><a href="#Base100（emoji编码）" class="headerlink" title="Base100（emoji编码）"></a>Base100（emoji编码）</h3><p>所谓Emoji就是一种在Unicode位于<code>\u1F601</code>-<code>\u1F64F</code>区段的字符。而这个编码就是在这个范围内进行转换。</p>
+<p><strong>解码工具：</strong></p>
+<p>base16-base91：<a href="https://www.qtool.net/baseencode">https://www.qtool.net/baseencode</a></p>
+<p>base100：<a href="http://www.atoolbox.net/Tool.php?Id=936">http://www.atoolbox.net/Tool.php?Id=936</a></p>
+<h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><p>MD5实质上，是一种哈希算法，它的输出则是生成一个128位输出结果。若输入两个不同的明文，则会输出两个不相同的输出值，且根据输出值，不能得到原始的明文，其过程是不可逆的。</p>
+<p>解码工具：<a href="https://www.cmd5.com/">https://www.cmd5.com/</a></p>
+<p><a href="https://www.somd5.com/">https://www.somd5.com/</a></p>
+<h2 id="ROT编码"><a href="#ROT编码" class="headerlink" title="ROT编码"></a>ROT编码</h2><table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>字符集</strong></th>
+<th><strong>例子</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rot5</td>
+<td>只将字符串中的<strong>数字</strong>进行加密，步数为5，同时在0-9十个数字进行循环</td>
+<td>12abcc3——&gt;67abcc8</td>
+</tr>
+<tr>
+<td><strong>rot13</strong></td>
+<td>只将字符串中的<strong>字母</strong>进行加密，步数为13，加密方式上最接近凯撒密码，分别在A-Z或a-z之间循环</td>
+<td>A——&gt;N  B——&gt;O</td>
+</tr>
+<tr>
+<td>rot18</td>
+<td>0-9十个数字，步数为5；A-Z或a-z之间，步数为13</td>
+<td>12abcc3——&gt;67nopp8</td>
+</tr>
+<tr>
+<td>rot47</td>
+<td>对<strong>数字、字母、常用符号</strong>进行编码，按照它们的ASCII(范围是33－126)值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符</td>
+<td>Z——&gt;K   O——&gt;_</td>
+</tr>
+</tbody></table>
+<p>解密网址：<a href="https://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php">https://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php</a> (全部都能解)<br>                <a href="http://ctf.ssleye.com/rot13.html">http://ctf.ssleye.com/rot13.html</a>    (仅能解rot13)</p>
+<h2 id="字符类编码"><a href="#字符类编码" class="headerlink" title="字符类编码"></a>字符类编码</h2><h3 id="带相同符号"><a href="#带相同符号" class="headerlink" title="带相同符号"></a><strong>带相同符号</strong></h3><table>
+<thead>
+<tr>
+<th>编码类型</th>
+<th>例子</th>
+<th>解码网址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unicode</td>
+<td><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Unicode%E4%BE%8B%E5%AD%90.png?raw=true"></td>
+<td><strong><a href="https://tool.chinaz.com/tools/unicode.aspx">https://tool.chinaz.com/tools/unicode.aspx</a></strong></td>
+</tr>
+<tr>
+<td>Urlencode</td>
+<td>A → %41a → %61</td>
+<td><strong><a href="http://tool.chinaz.com/tools/urlencode.aspx">http://tool.chinaz.com/tools/urlencode.aspx</a></strong></td>
+</tr>
+<tr>
+<td>quoted printable</td>
+<td>&#x3D;E5&#x3D;A4&#x3D;A9&#x3D;E4&#x3D;B8&#x3D;8A&#x3D;E6&#x3D;8E&#x3D;89&#x3D;E4&#x3D;B8&#x3D;8B&#x3D;E4&#x3D;BA&#x3D;86<br>&#x3D;E4&#x3D;B8&#x3D;AA&#x3D;E7&#x3D;8C&#x3D;AA&#x3D;E5&#x3D;85&#x3D;AB&#x3D;E6&#x3D;88&#x3D;92</td>
+<td><strong><a href="http://web.chacuo.net/charsetquotedprintable/**%E3%80%81**http://ctf.ssleye.com/quoted.html">http://web.chacuo.net/charsetquotedprintable/**、**http://ctf.ssleye.com/quoted.html</a></strong></td>
+</tr>
+<tr>
+<td>HTML实体编码</td>
+<td><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/HTML%E5%AE%9E%E4%BD%93%E7%BC%96%E7%A0%81%E4%BE%8B%E5%AD%90.png?raw=true"></td>
+<td><strong><a href="http://www.toolzl.com/tools/htmlende.html*%E3%80%81">http://www.toolzl.com/tools/htmlende.html*、</a>*</strong><a href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php</a></td>
+</tr>
+<tr>
+<td>Eescape、Unscape编码</td>
+<td>%u0068%u0065%u006c%u006c%u006f%uff0c%u0077%u006f<br>%u0072%u006c%u0064%u002e</td>
+<td><strong><a href="http://web.chacuo.net/charsetescape/">http://web.chacuo.net/charsetescape/</a></strong></td>
+</tr>
+</tbody></table>
+<h3 id="纯字符类型："><a href="#纯字符类型：" class="headerlink" title="纯字符类型："></a><strong>纯字符类型：</strong></h3><table>
+<thead>
+<tr>
+<th><strong>编码类型</strong></th>
+<th><strong>例子</strong></th>
+<th><strong>字符集</strong></th>
+<th><strong>解码网址</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jother</td>
+<td>!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]</td>
+<td>是一种运用于javascript语言中利用少量字符构造精简的匿名函数方法对于字符串进行的编码方式。其中8个少量字符包括：! + ( ) [ ] { }。只用这些字符就能完成对任意字符串的编码</td>
+<td>直接在浏览器(IE可以)的控制台里输入密文即可执行解密</td>
+</tr>
+<tr>
+<td>JSFuck</td>
+<td>1 &#x3D;&gt; +!+[]</td>
+<td>用 6 个字符’()[]!+’来编写 JavaScript 程序</td>
+<td><strong><a href="http://www.jsfuck.com/">http://www.jsfuck.com/</a></strong></td>
+</tr>
+<tr>
+<td>BrainFuck</td>
+<td>,&gt;++++++[&lt;——–&gt;-],,[&lt;+&gt;-],&lt;.&gt;.</td>
+<td><strong>&gt;</strong> 指针右移一位指向下一个字节 <strong>&lt;</strong> 指针左移一位指向上一个字节**+** 当前指针指向的字节+1   <strong>-</strong> 当前指针指向的字节-1 .以char的形式输出当前指针指向的字节（48会输出’0’）, 以ASCII的形式读入到当前指针指向的字节（读入’0’会存储48）[ 当当前指针指向的字节不是零时，会进行循环] 当当前指针指向的字节非零时回到循环，否则退出</td>
+<td><strong><a href="https://www.nayuki.io/page/brainfuck-interpreter-javascript">https://www.nayuki.io/page/brainfuck-interpreter-javascript</a></strong>*</td>
+</tr>
+</tbody></table>
+<h2 id="图形类编码"><a href="#图形类编码" class="headerlink" title="图形类编码"></a>图形类编码</h2><h3 id="摩斯电码"><a href="#摩斯电码" class="headerlink" title="摩斯电码"></a>摩斯电码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E6%91%A9%E5%B0%94%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86.jpg?raw=true"></p>
+<p>解码网址：</p>
+<p><a href="http://www.hiencode.com/morse.html">http://www.hiencode.com/morse.html</a></p>
+<h3 id="培根密码"><a href="#培根密码" class="headerlink" title="培根密码"></a>培根密码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81.jpg?raw=true"></p>
+<h3 id="猪圈密码"><a href="#猪圈密码" class="headerlink" title="猪圈密码"></a>猪圈密码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%8C%AA%E5%9C%88%E5%AF%86%E7%A0%81.png?raw=true"></p>
+<p>猪圈密码的变式</p>
+<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%8C%AA%E5%9C%88%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.jpg?raw=true"></p>
+<p>解码网址：<a href="http://www.hiencode.com/yd_pigpen.html">http://www.hiencode.com/yd_pigpen.html</a></p>
+<p>如果想了解更多的猪圈密码的变种，可以看一下这个网站：<br><a href="https://tieba.baidu.com/p/3938367567">https://tieba.baidu.com/p/3938367567</a></p>
+<h3 id="跳舞的小人"><a href="#跳舞的小人" class="headerlink" title="跳舞的小人"></a>跳舞的小人</h3><p>在线网站：<a href="https://www.dcode.fr/dancing-men-cipher">https://www.dcode.fr/dancing-men-cipher</a></p>
+<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E8%B7%B3%E8%88%9E%E7%9A%84%E5%B0%8F%E4%BA%BA.jpg?raw=true"></p>
+<h3 id="古灵精怪码"><a href="#古灵精怪码" class="headerlink" title="古灵精怪码"></a>古灵精怪码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E5%8F%A4%E7%B2%BE%E7%81%B5%E7%A0%81.jpg?raw=true"></p>
+<h3 id="象形文字"><a href="#象形文字" class="headerlink" title="象形文字"></a>象形文字</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E9%9D%9E%E6%96%AF%E7%9A%84%E8%B1%A1%E5%BD%A2%E6%96%87%E5%AD%97%E7%BF%BB%E8%AF%91%E5%9B%BE.png?raw=true"></p>
+<h3 id="盲文"><a href="#盲文" class="headerlink" title="盲文"></a>盲文</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%9B%B2%E6%96%87.jpg?raw=true"></p>
+<h3 id="音符加密"><a href="#音符加密" class="headerlink" title="音符加密"></a>音符加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E9%9F%B3%E7%AC%A6%E5%8A%A0%E5%AF%86.jpg?raw=true"></p>
+<h3 id="银河语言"><a href="#银河语言" class="headerlink" title="银河语言"></a>银河语言</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E9%93%B6%E6%B2%B3%E8%AF%AD%E8%A8%80.png?raw=true"></p>
+<h3 id="alphabet-minimoys"><a href="#alphabet-minimoys" class="headerlink" title="alphabet minimoys"></a>alphabet minimoys</h3><p>在线网站：<a href="https://www.dcode.fr/arthur-invisibles-cipher">https://www.dcode.fr/arthur-invisibles-cipher</a></p>
+<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/alphabet%20minimoys.png?raw=true"></p>
+<h3 id="Pokemon-species"><a href="#Pokemon-species" class="headerlink" title="Pokemon species"></a>Pokemon species</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Pokemon%20species.png?raw=true"></p>
+<h3 id="dtmf"><a href="#dtmf" class="headerlink" title="dtmf"></a>dtmf</h3><p>简单说就是手机不同按键对应不同的声音，看谱图解密。</p>
+<h2 id="文字类编码"><a href="#文字类编码" class="headerlink" title="文字类编码"></a>文字类编码</h2><h3 id="社会主义编码"><a href="#社会主义编码" class="headerlink" title="社会主义编码"></a>社会主义编码</h3><p>字符全部是社会主义核心价值观。</p>
+<p> <strong>在线工具：</strong></p>
+<p><a href="https://sym233.github.io/core-values-encoder/">社会主义编码</a></p>
+<h3 id="与佛论禅"><a href="#与佛论禅" class="headerlink" title="与佛论禅"></a>与佛论禅</h3><p>密文以”佛曰：如是我闻：”开头，密文一般是与关佛经的汉字</p>
+<p> <strong>在线工具：</strong></p>
+<p><a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx">与佛论禅</a></p>
+<h3 id="新与佛论禅"><a href="#新与佛论禅" class="headerlink" title="新与佛论禅"></a>新与佛论禅</h3><p>以“新佛曰：”开头的文字。</p>
+<p><strong>在线工具：</strong></p>
+<p><a href="http://hi.pcmoe.net/buddha.html">http://hi.pcmoe.net/buddha.html</a></p>
+<h3 id="当铺密码"><a href="#当铺密码" class="headerlink" title="当铺密码"></a>当铺密码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E5%BD%93%E9%93%BA%E5%AF%86%E7%A0%81.jpg?raw=true"></p>
+<h2 id="通过按键产生的编码"><a href="#通过按键产生的编码" class="headerlink" title="通过按键产生的编码"></a>通过按键产生的编码</h2><h3 id="电脑键盘QWE加密"><a href="#电脑键盘QWE加密" class="headerlink" title="电脑键盘QWE加密"></a>电脑键盘QWE加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%94%B5%E8%84%91%E9%94%AE%E7%9B%98QWE%E5%8A%A0%E5%AF%86%E6%B3%95.jpg?raw=true"></p>
+<h3 id="电脑键盘棋盘加密"><a href="#电脑键盘棋盘加密" class="headerlink" title="电脑键盘棋盘加密"></a>电脑键盘棋盘加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%94%B5%E8%84%91%E9%94%AE%E7%9B%98%E6%A3%8B%E7%9B%98%E5%8A%A0%E5%AF%86.jpg?raw=true"></p>
+<h3 id="电脑键盘坐标加密"><a href="#电脑键盘坐标加密" class="headerlink" title="电脑键盘坐标加密"></a>电脑键盘坐标加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%94%B5%E8%84%91%E9%94%AE%E7%9B%98%E5%9D%90%E6%A0%87%E5%8A%A0%E5%AF%86.jpg?raw=true"></p>
+<h3 id="手机键盘加密"><a href="#手机键盘加密" class="headerlink" title="手机键盘加密"></a>手机键盘加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.jpg?raw=true"></p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>CTF中的编码总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>区块链学习笔记</title>
     <url>/2022/03/08/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="区块链学习笔记"><a href="#区块链学习笔记" class="headerlink" title="区块链学习笔记"></a>区块链学习笔记</h1><p><em>from:图说区块链</em></p>
@@ -232,449 +675,6 @@
       </categories>
       <tags>
         <tag>区块链学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Anaconda指南</title>
-    <url>/2021/06/10/Anaconda%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<h2 id="一、什么是Anaconda？"><a href="#一、什么是Anaconda？" class="headerlink" title="一、什么是Anaconda？"></a>一、什么是Anaconda？</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>Anaconda（<a href="https://link.zhihu.com/?target=https://www.anaconda.com/download/%23macos">官方网站</a>）就是可以便捷获取包且对包能够进行管理，同时对环境可以统一管理的发行版本。Anaconda包含了conda、Python在内的超过180个科学包及其依赖项。</p>
-<span id="more"></span>
-
-<h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h3><p>Anaconda具有如下特点：</p>
-<p>​    ▪ 开源</p>
-<p>​    ▪ 安装过程简单</p>
-<p>​    ▪ 高性能使用Python和R语言</p>
-<p>​    ▪ 免费的社区支持</p>
-<p>其特点的实现主要基于Anaconda拥有的：</p>
-<p>​    ▪ conda包</p>
-<p>​    ▪ 环境管理器</p>
-<p>​    ▪ 1,000+开源库</p>
-<p>​    如果日常工作或学习并不必要使用1,000多个库，那么可以考虑安装Miniconda（<a href="https://link.zhihu.com/?target=https://conda.io/miniconda.html">下载界面请戳</a>），这里不过多介绍Miniconda的安装及使用。</p>
-<h3 id="3-Anaconda、conda、pip、virtualenv"><a href="#3-Anaconda、conda、pip、virtualenv" class="headerlink" title="3. Anaconda、conda、pip、virtualenv"></a>3. Anaconda、conda、pip、virtualenv</h3><h4 id="①-Anaconda"><a href="#①-Anaconda" class="headerlink" title="① Anaconda"></a>① Anaconda</h4><p>​    Anaconda是一个包含180+的科学包及其依赖项的发行版本。其包含的科学包包括：conda, numpy, scipy, ipython notebook等。</p>
-<h4 id="②-conda"><a href="#②-conda" class="headerlink" title="② conda"></a>② conda</h4><p>conda是包及其依赖项和环境的管理工具。</p>
-<h5 id="▪-适用语言："><a href="#▪-适用语言：" class="headerlink" title="▪ 适用语言："></a>▪ 适用语言：</h5><p>​            Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
-<h5 id="▪-适用平台："><a href="#▪-适用平台：" class="headerlink" title="▪ 适用平台："></a>▪ 适用平台：</h5><p>​            Windows, macOS, Linux</p>
-<h5 id="▪-用途："><a href="#▪-用途：" class="headerlink" title="▪ 用途："></a>▪ 用途：</h5><p>​        ① 快速安装、运行和升级包及其依赖项。</p>
-<p>​        ② 在计算机中便捷地创建、保存、加载和切换环境。</p>
-<h4 id="③-pip"><a href="#③-pip" class="headerlink" title="③ pip"></a><strong>③ pip</strong></h4><p><strong>pip是用于安装和管理软件包的包管理器。</strong></p>
-<p>​    ▪ pip编写语言：Python。</p>
-<p>​    ▪ Python中默认安装的版本：</p>
-<p>​        ① Python 2.7.9及后续版本：默认安装，命令为 <strong>pip</strong></p>
-<p>​        ② Python 3.4及后续版本：默认安装，命令为 <strong>pip3</strong></p>
-<h4 id="④-virtualenv"><a href="#④-virtualenv" class="headerlink" title="④ virtualenv"></a><strong>④ virtualenv</strong></h4><p><strong>virtualenv是用于创建一个独立的Python环境的工具。</strong></p>
-<p>​    virtualenv将会为它自己的安装目录创建一个环境，这并不与其他virtualenv环境共享库；同时也可以选择性地不连接已安装的全局库。</p>
-<h4 id="⑤-pip-与-conda-比较"><a href="#⑤-pip-与-conda-比较" class="headerlink" title="⑤ pip 与 conda 比较"></a><strong>⑤ pip 与 conda 比较</strong></h4><h5 id="a-依赖项检查"><a href="#a-依赖项检查" class="headerlink" title="a. 依赖项检查"></a>a. 依赖项检查</h5><p><strong>▪ pip：</strong></p>
-<p>​    ① 不一定会展示所需其他依赖包。</p>
-<p>​    ② 安装包时或许会直接忽略依赖项而安装，仅在结果中提示错误。</p>
-<p><strong>▪ conda：</strong></p>
-<p>​    ① 列出所需其他依赖包。</p>
-<p>​    ② 安装包时自动安装其依赖项。</p>
-<p>​    ③ 可以便捷地在包的不同版本中自由切换。 </p>
-<h5 id="b-环境管理"><a href="#b-环境管理" class="headerlink" title="b.环境管理"></a>b.环境管理</h5><p>​    ▪ <strong>pip</strong>：维护多个环境难度较大。</p>
-<p>​    ▪ <strong>conda</strong>：比较方便地在不同环境之间进行切换，环境管理较为简单。</p>
-<h5 id="c-对系统自带Python的影响"><a href="#c-对系统自带Python的影响" class="headerlink" title="c. 对系统自带Python的影响"></a>c. 对系统自带Python的影响</h5><p>​    ▪ <strong>pip</strong>：在系统自带Python中包的更新&#x2F;回退版本&#x2F;卸载将影响其他程序。</p>
-<p>​    ▪ <strong>conda</strong>：不会影响系统自带Python。</p>
-<h5 id="d-适用语言"><a href="#d-适用语言" class="headerlink" title="d. 适用语言"></a>d. 适用语言</h5><p>​    ▪ pip：仅适用于Python。</p>
-<p>​    ▪ conda：适用于Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
-<h2 id="二、Windows安装"><a href="#二、Windows安装" class="headerlink" title="二、Windows安装"></a>二、Windows安装</h2><h3 id="1-安装网址"><a href="#1-安装网址" class="headerlink" title="1.安装网址"></a>1.安装网址</h3><ul>
-<li><a href="https://www.anaconda.com/">官网</a></li>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华大学提供了镜像地址</a> 这个会下的更快一些</li>
-</ul>
-<h3 id="2-下载注意点"><a href="#2-下载注意点" class="headerlink" title="2.下载注意点"></a>2.下载注意点</h3><p>​    ① 如果下载有阻碍暂时地关闭杀毒软件，并在安装程序完成之后再打开。</p>
-<p>​    ② 如果在安装时选择了“为所有用户安装”，则卸载Anaconda然后重新安装，只为“我这个用户”安装。</p>
-<p>​    ③ 目标路径中不能含有空格，同时不能是<strong>unicode</strong>编码。</p>
-<p>​    ④ 除非被要求以管理员权限安装，否则不要以管理员身份安装。</p>
-<h3 id="3-证明安装成功"><a href="#3-证明安装成功" class="headerlink" title="3.证明安装成功"></a>3.证明安装成功</h3><p>​    ① “开始 → Anaconda3（64-bit）→ Anaconda Navigator”，若可以成功启动Anaconda Navigator则说明安装成功。</p>
-<p>​    ② “开始 → Anaconda3（64-bit）→ 右键点击Anaconda Prompt → 以管理员身份运行”，在Anaconda Prompt中输入 conda list ，可以查看已经安装的包名和版本号。若结果可以正常显示，则说明安装成功。</p>
-<h2 id="三、管理conda的情况"><a href="#三、管理conda的情况" class="headerlink" title="三、管理conda的情况"></a>三、管理conda的情况</h2><p>（Windows用“Anaconda Prompt”打开，Macos和Linux用“Terminal”打开）</p>
-<h3 id="1-验证conda已被安装"><a href="#1-验证conda已被安装" class="headerlink" title="1. 验证conda已被安装"></a><strong>1. 验证conda已被安装</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-更新conda至最新版本"><a href="#2-更新conda至最新版本" class="headerlink" title="2. 更新conda至最新版本"></a><strong>2. 更新conda至最新版本</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-查看conda帮助信息"><a href="#3-查看conda帮助信息" class="headerlink" title="3. 查看conda帮助信息"></a><strong>3. 查看conda帮助信息</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda --<span class="built_in">help</span></span><br><span class="line">conda -h</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-卸载conda"><a href="#4-卸载conda" class="headerlink" title="4. 卸载conda"></a><strong>4. 卸载conda</strong></h3><h4 id="①-Linux-或-macOS"><a href="#①-Linux-或-macOS" class="headerlink" title="① Linux 或 macOS"></a><strong>① Linux 或 macOS</strong></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf ~/anaconda2</span><br><span class="line"><span class="built_in">rm</span> -rf ~/anaconda3</span><br></pre></td></tr></table></figure>
-
-<p>即删除Anaconda的安装目录。根据安装的Anaconda版本选择相应的卸载命令。</p>
-<h4 id="②-Windows"><a href="#②-Windows" class="headerlink" title="② Windows"></a><strong>② Windows</strong></h4><p>​    控制面板 → 添加或删除程序 → 选择“Python X.X (Anaconda)” → 点击“删除程序”</p>
-<ul>
-<li><p>注意：</p>
-<p>① Python X.X：即Python的版本，如：Python 3.6。</p>
-<p>② Windows 10的删除有所不同。</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda clean --all -y</span><br></pre></td></tr></table></figure>
-
-<p>​            或者找找到anaconda安装的文件夹，找到Uninstall-Anaconda.exe，左键双击运行按步骤卸载。</p>
-<h2 id="四、管理conda的包"><a href="#四、管理conda的包" class="headerlink" title="四、管理conda的包"></a>四、管理conda的包</h2><h3 id="1-在默认环境下更新所有的包"><a href="#1-在默认环境下更新所有的包" class="headerlink" title="1.在默认环境下更新所有的包"></a>1.在默认环境下更新所有的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda upgrade --all</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装包"><a href="#2-安装包" class="headerlink" title="2.安装包"></a>2.安装包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install package_name</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-指定所需的包版本"><a href="#3-指定所需的包版本" class="headerlink" title="3.指定所需的包版本"></a>3.指定所需的包版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install [pakage]=[version]</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda remove package_name  </span><br></pre></td></tr></table></figure>
-
-<h3 id="5-更新包"><a href="#5-更新包" class="headerlink" title="5.更新包"></a>5.更新包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda update package_name</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-尝试使用某个包"><a href="#6-尝试使用某个包" class="headerlink" title="6.尝试使用某个包"></a>6.尝试使用某个包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda search search_pakage</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-查找可供安装的包版本"><a href="#7-查找可供安装的包版本" class="headerlink" title="7.查找可供安装的包版本"></a>7.查找可供安装的包版本</h3><h4 id="①-精确查找"><a href="#①-精确查找" class="headerlink" title="① 精确查找"></a>① 精确查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda search --full-name [package_full_name]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>注意：</p>
-<p>① –full-name 为精确查找的参数。</p>
-<p>② [package_full_name] 是被查找包的全名。</p>
-</li>
-<li><p>例如 conda search –full-name python即查找全名为“python”的包有哪些版本可供安装。</p>
-</li>
-</ul>
-<h4 id="②-模糊查找"><a href="#②-模糊查找" class="headerlink" title="② 模糊查找"></a>② 模糊查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda search [text]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>text是查找含有此字段的包名</li>
-<li>例如conda search py即查找含有“py”字段的包</li>
-</ul>
-<h3 id="8-获取当前环境中已安装的包信息"><a href="#8-获取当前环境中已安装的包信息" class="headerlink" title="8.获取当前环境中已安装的包信息"></a>8.获取当前环境中已安装的包信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
-
-<h3 id="9-找不到包时在官网下载"><a href="#9-找不到包时在官网下载" class="headerlink" title="9.找不到包时在官网下载"></a>9.找不到包时在官网下载</h3><p><a href="http://anaconda.org/">官网地址</a></p>
-<h2 id="五、管理conda环境"><a href="#五、管理conda环境" class="headerlink" title="五、管理conda环境"></a>五、管理conda环境</h2><h3 id="1-新建环境"><a href="#1-新建环境" class="headerlink" title="1. 新建环境"></a>1. 新建环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create -n [env_name] [list of packages] conda create -n [version] </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>-n env_name 设置环境的名称（-n 是指名称）</li>
-<li>list of packages 是要安装在环境中的包的列表</li>
-<li>version 创建具有特定 Python 版本的环境</li>
-</ul>
-<h3 id="2-进入环境"><a href="#2-进入环境" class="headerlink" title="2.进入环境"></a>2.进入环境</h3><h4 id="①Windows环境"><a href="#①Windows环境" class="headerlink" title="①Windows环境"></a>①Windows环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">activate [my_env]</span><br></pre></td></tr></table></figure>
-
-<h4 id="②OSX-x2F-Linux环境"><a href="#②OSX-x2F-Linux环境" class="headerlink" title="②OSX&#x2F;Linux环境"></a>②OSX&#x2F;Linux环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> activate [my_env]</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-离开环境"><a href="#3-离开环境" class="headerlink" title="3.离开环境"></a>3.离开环境</h3><h4 id="①Windows环境-1"><a href="#①Windows环境-1" class="headerlink" title="①Windows环境"></a>①Windows环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> deactivate</span><br></pre></td></tr></table></figure>
-
-<h4 id="②OSX-x2F-Linux环境-1"><a href="#②OSX-x2F-Linux环境-1" class="headerlink" title="②OSX&#x2F;Linux环境"></a>②OSX&#x2F;Linux环境</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-查看环境"><a href="#4-查看环境" class="headerlink" title="4.查看环境"></a>4.查看环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda info -econda <span class="built_in">env</span> list</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-删除环境"><a href="#5-删除环境" class="headerlink" title="5.删除环境"></a>5.删除环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> remove -n [env_name]</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-复制环境"><a href="#6-复制环境" class="headerlink" title="6.复制环境"></a>6.复制环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create --name [new_env_name] --<span class="built_in">clone</span> [old_env_name] </span><br></pre></td></tr></table></figure>
-
-<h3 id="7-通过yml文件在环境中迁入迁出"><a href="#7-通过yml文件在环境中迁入迁出" class="headerlink" title="7.通过yml文件在环境中迁入迁出"></a>7.通过yml文件在环境中迁入迁出</h3><p>环境迁移导出：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; environment.yaml</span><br></pre></td></tr></table></figure>
-
-<p>在新环境中导入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> create -f environment.yaml</span><br></pre></td></tr></table></figure>
-
-<p>create完后，update一下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda <span class="built_in">env</span> update -f environment.yaml</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="六、参考资料"><a href="#六、参考资料" class="headerlink" title="六、参考资料"></a>六、参考资料</h2><p><a href="https://www.cnblogs.com/WangYiqiang/p/12257671.html">https://www.cnblogs.com/WangYiqiang/p/12257671.html</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/52127512">https://zhuanlan.zhihu.com/p/52127512</a></p>
-<p><a href="https://blog.csdn.net/zahidzqj/article/details/88745559">https://blog.csdn.net/zahidzqj/article/details/88745559</a></p>
-<p>完结撒花～</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>Anaconda指南</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编码总结</title>
-    <url>/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="Base家族"><a href="#Base家族" class="headerlink" title="Base家族"></a>Base家族</h2><h3 id="Base10（十进制）"><a href="#Base10（十进制）" class="headerlink" title="Base10（十进制）"></a>Base10（十进制）</h3><h3 id="Base2（二进制）"><a href="#Base2（二进制）" class="headerlink" title="Base2（二进制）"></a>Base2（二进制）</h3><h3 id="Base16（十六进制）"><a href="#Base16（十六进制）" class="headerlink" title="Base16（十六进制）"></a>Base16（十六进制）</h3><p>字符集：0-9，A-F，共16个</p>
-<p>代码示例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">print</span> (base64.b16encode(<span class="string">b&quot;flag&quot;</span>))</span><br><span class="line"><span class="built_in">print</span> (base64.b16decode(<span class="string">b&quot;666C6167&quot;</span>))</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h3 id="Base32"><a href="#Base32" class="headerlink" title="Base32"></a>Base32</h3><p>字符集：A-Z，2-7，共32个以及补位的“&#x3D;”</p>
-<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/base32%E7%BC%96%E7%A0%81%E8%A1%A8.png?raw=true"></p>
-<p>代码示例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">print</span> (base64.b32encode(<span class="string">b&quot;flag&quot;</span>))</span><br><span class="line"><span class="built_in">print</span> (base64.b32decode(<span class="string">b&quot;MZWGCZY=&quot;</span>))</span><br></pre></td></tr></table></figure>
-
-<h3 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h3><p>字符集：a-z,A-z,0-9,+,&#x2F;共64个以及补位的“&#x3D;”</p>
-<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Base64%E7%BC%96%E7%A0%81%E8%A1%A8.png?raw=true"></p>
-<p>代码示例 :</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="built_in">print</span> (codecs.encode(<span class="string">b&quot;flag&quot;</span>,<span class="string">&quot;base64&quot;</span>)[:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span> (codecs.decode(<span class="string">b&quot;ZmxhZw==&quot;</span>,<span class="string">&quot;base64&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="built_in">print</span> (base64.b64encode(<span class="string">b&quot;flag&quot;</span>))</span><br><span class="line"><span class="built_in">print</span> (base64.b64decode(<span class="string">b&quot;ZmxhZw==&quot;</span>))</span><br></pre></td></tr></table></figure>
-
-<h3 id="以flag为例来讲解一下这些进制："><a href="#以flag为例来讲解一下这些进制：" class="headerlink" title="以flag为例来讲解一下这些进制："></a>以flag为例来讲解一下这些进制：</h3><table>
-<thead>
-<tr>
-<th></th>
-<th>f</th>
-<th>l</th>
-<th>a</th>
-<th>g</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Base10</td>
-<td>102</td>
-<td>108</td>
-<td>97</td>
-<td>103</td>
-</tr>
-<tr>
-<td>Base2</td>
-<td>01100110</td>
-<td>01101100</td>
-<td>01100001</td>
-<td>01100111</td>
-</tr>
-<tr>
-<td>Base16</td>
-<td>66</td>
-<td>6C</td>
-<td>61</td>
-<td>67</td>
-</tr>
-</tbody></table>
-<p>Base32：<br>$$<br>32&#x3D;2^5<br>$$<br>所以应该为五个一组：</p>
-<p>01100 11001 10110 00110 00010 11001 11</p>
-<p>后面缺了的位数用0补上，最后应该为：</p>
-<p>01100 11001 10110 00110 00010 11001 11000</p>
-<p>对应的字符如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>二进制</th>
-<th>01100</th>
-<th>11001</th>
-<th>10110</th>
-<th>00110</th>
-<th>00010</th>
-<th>11001</th>
-<th>11000</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>十进制</td>
-<td>12</td>
-<td>25</td>
-<td>22</td>
-<td>6</td>
-<td>2</td>
-<td>25</td>
-<td>24</td>
-</tr>
-<tr>
-<td>Base32</td>
-<td>M</td>
-<td>Z</td>
-<td>W</td>
-<td>G</td>
-<td>C</td>
-<td>Z</td>
-<td>Y</td>
-</tr>
-</tbody></table>
-<p>此时不是40（5、8的最小公倍数）的倍数，所以需要补一个“&#x3D;”，一个“&#x3D;”相当于一个组（5位）</p>
-<p>Base64：<br>$$<br>64&#x3D;2^6<br>$$<br>所以应该分为6个一组：</p>
-<p>011001 100110 110001 100001 011001 11</p>
-<p>后面缺了的位数用0补上，最后应该为：</p>
-<p>011001 100110 110001 100001 011001 110000</p>
-<p>对应的字符如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>二进制</th>
-<th>011001</th>
-<th>100110</th>
-<th>110001</th>
-<th>100001</th>
-<th>011001</th>
-<th>110000</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>十进制</td>
-<td>25</td>
-<td>38</td>
-<td>49</td>
-<td>33</td>
-<td>25</td>
-<td>48</td>
-</tr>
-<tr>
-<td>Base64</td>
-<td>Z</td>
-<td>m</td>
-<td>x</td>
-<td>h</td>
-<td>Z</td>
-<td>w</td>
-</tr>
-</tbody></table>
-<p>此时不是24（6、8的最小公倍数）的倍数，所以应该进行补位，这里补（48-36）÷6&#x3D;2，即两个”&#x3D;“</p>
-<h3 id="Base58"><a href="#Base58" class="headerlink" title="Base58"></a>Base58</h3><p>base_58 是用于 Bitcoin 中使用的一种独特的编码方式，主要用于产生Bitcoin的钱包地址。</p>
-<p>Base58遵循Base64类似的过程，但不同于Base64的是，编码表少了数字0，大写字母I，O，小写字母 l (这个是L），以及符号+和&#x2F;。</p>
-<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Base58%E7%BC%96%E7%A0%81%E8%A1%A8.png?raw=true"></p>
-<h3 id="Base62"><a href="#Base62" class="headerlink" title="Base62"></a>Base62</h3><p>Base62遵循Base64类似的过程，但不同于Base64的是，编码表少了符号+和&#x2F;。</p>
-<h3 id="Base85"><a href="#Base85" class="headerlink" title="Base85"></a>Base85</h3><p>Base85 也称为Ascii85，是Paul E. Rutter为btoa实用程序开发的一种二进制文本编码形式。通过使用五个ASCII字符来表示四个字节的二进制数据，它比UUENCODE或Base64使用四个字符来表示三个字节的数据更有效。</p>
-<p>以flag举例：</p>
-<table>
-<thead>
-<tr>
-<th>编码类型</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Base85</td>
-<td>Ao(mg</td>
-</tr>
-<tr>
-<td>Base64</td>
-<td>ZmxhZw&#x3D;&#x3D;</td>
-</tr>
-<tr>
-<td>UUENCODE</td>
-<td>$9FQA9P&#96;&#96;</td>
-</tr>
-</tbody></table>
-<h3 id="Base91"><a href="#Base91" class="headerlink" title="Base91"></a>Base91</h3><p>base91需要91个字符来表示用ASCII编码的二进制数据。</p>
-<h3 id="Base100（emoji编码）"><a href="#Base100（emoji编码）" class="headerlink" title="Base100（emoji编码）"></a>Base100（emoji编码）</h3><p>所谓Emoji就是一种在Unicode位于<code>\u1F601</code>-<code>\u1F64F</code>区段的字符。而这个编码就是在这个范围内进行转换。</p>
-<p><strong>解码工具：</strong></p>
-<p>base16-base91：<a href="https://www.qtool.net/baseencode">https://www.qtool.net/baseencode</a></p>
-<p>base100：<a href="http://www.atoolbox.net/Tool.php?Id=936">http://www.atoolbox.net/Tool.php?Id=936</a></p>
-<h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><p>MD5实质上，是一种哈希算法，它的输出则是生成一个128位输出结果。若输入两个不同的明文，则会输出两个不相同的输出值，且根据输出值，不能得到原始的明文，其过程是不可逆的。</p>
-<p>解码工具：<a href="https://www.cmd5.com/">https://www.cmd5.com/</a></p>
-<p><a href="https://www.somd5.com/">https://www.somd5.com/</a></p>
-<h2 id="ROT编码"><a href="#ROT编码" class="headerlink" title="ROT编码"></a>ROT编码</h2><table>
-<thead>
-<tr>
-<th><strong>类型</strong></th>
-<th><strong>字符集</strong></th>
-<th><strong>例子</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>rot5</td>
-<td>只将字符串中的<strong>数字</strong>进行加密，步数为5，同时在0-9十个数字进行循环</td>
-<td>12abcc3——&gt;67abcc8</td>
-</tr>
-<tr>
-<td><strong>rot13</strong></td>
-<td>只将字符串中的<strong>字母</strong>进行加密，步数为13，加密方式上最接近凯撒密码，分别在A-Z或a-z之间循环</td>
-<td>A——&gt;N  B——&gt;O</td>
-</tr>
-<tr>
-<td>rot18</td>
-<td>0-9十个数字，步数为5；A-Z或a-z之间，步数为13</td>
-<td>12abcc3——&gt;67nopp8</td>
-</tr>
-<tr>
-<td>rot47</td>
-<td>对<strong>数字、字母、常用符号</strong>进行编码，按照它们的ASCII(范围是33－126)值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符</td>
-<td>Z——&gt;K   O——&gt;_</td>
-</tr>
-</tbody></table>
-<p>解密网址：<a href="https://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php">https://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php</a> (全部都能解)<br>                <a href="http://ctf.ssleye.com/rot13.html">http://ctf.ssleye.com/rot13.html</a>    (仅能解rot13)</p>
-<h2 id="字符类编码"><a href="#字符类编码" class="headerlink" title="字符类编码"></a>字符类编码</h2><h3 id="带相同符号"><a href="#带相同符号" class="headerlink" title="带相同符号"></a><strong>带相同符号</strong></h3><table>
-<thead>
-<tr>
-<th>编码类型</th>
-<th>例子</th>
-<th>解码网址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Unicode</td>
-<td><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Unicode%E4%BE%8B%E5%AD%90.png?raw=true"></td>
-<td><strong><a href="https://tool.chinaz.com/tools/unicode.aspx">https://tool.chinaz.com/tools/unicode.aspx</a></strong></td>
-</tr>
-<tr>
-<td>Urlencode</td>
-<td>A → %41a → %61</td>
-<td><strong><a href="http://tool.chinaz.com/tools/urlencode.aspx">http://tool.chinaz.com/tools/urlencode.aspx</a></strong></td>
-</tr>
-<tr>
-<td>quoted printable</td>
-<td>&#x3D;E5&#x3D;A4&#x3D;A9&#x3D;E4&#x3D;B8&#x3D;8A&#x3D;E6&#x3D;8E&#x3D;89&#x3D;E4&#x3D;B8&#x3D;8B&#x3D;E4&#x3D;BA&#x3D;86<br />&#x3D;E4&#x3D;B8&#x3D;AA&#x3D;E7&#x3D;8C&#x3D;AA&#x3D;E5&#x3D;85&#x3D;AB&#x3D;E6&#x3D;88&#x3D;92</td>
-<td><strong><a href="http://web.chacuo.net/charsetquotedprintable/**%E3%80%81**http://ctf.ssleye.com/quoted.html">http://web.chacuo.net/charsetquotedprintable/**、**http://ctf.ssleye.com/quoted.html</a></strong></td>
-</tr>
-<tr>
-<td>HTML实体编码</td>
-<td><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/HTML%E5%AE%9E%E4%BD%93%E7%BC%96%E7%A0%81%E4%BE%8B%E5%AD%90.png?raw=true"></td>
-<td><strong><a href="http://www.toolzl.com/tools/htmlende.html*%E3%80%81">http://www.toolzl.com/tools/htmlende.html*、</a>*</strong><a href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php</a></td>
-</tr>
-<tr>
-<td>Eescape、Unscape编码</td>
-<td>%u0068%u0065%u006c%u006c%u006f%uff0c%u0077%u006f<br />%u0072%u006c%u0064%u002e</td>
-<td><strong><a href="http://web.chacuo.net/charsetescape/">http://web.chacuo.net/charsetescape/</a></strong></td>
-</tr>
-</tbody></table>
-<h3 id="纯字符类型："><a href="#纯字符类型：" class="headerlink" title="纯字符类型："></a><strong>纯字符类型：</strong></h3><table>
-<thead>
-<tr>
-<th><strong>编码类型</strong></th>
-<th><strong>例子</strong></th>
-<th><strong>字符集</strong></th>
-<th><strong>解码网址</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Jother</td>
-<td>!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]</td>
-<td>是一种运用于javascript语言中利用少量字符构造精简的匿名函数方法对于字符串进行的编码方式。其中8个少量字符包括：! + ( ) [ ] { }。只用这些字符就能完成对任意字符串的编码</td>
-<td>直接在浏览器(IE可以)的控制台里输入密文即可执行解密</td>
-</tr>
-<tr>
-<td>JSFuck</td>
-<td>1 &#x3D;&gt; +!+[]</td>
-<td>用 6 个字符’()[]!+’来编写 JavaScript 程序</td>
-<td><strong><a href="http://www.jsfuck.com/">http://www.jsfuck.com/</a></strong></td>
-</tr>
-<tr>
-<td>BrainFuck</td>
-<td>,&gt;++++++[&lt;——–&gt;-],,[&lt;+&gt;-],&lt;.&gt;.</td>
-<td><strong>&gt;</strong> 指针右移一位指向下一个字节 <strong>&lt;</strong> 指针左移一位指向上一个字节**+** 当前指针指向的字节+1   <strong>-</strong> 当前指针指向的字节-1 .以char的形式输出当前指针指向的字节（48会输出’0’）, 以ASCII的形式读入到当前指针指向的字节（读入’0’会存储48）[ 当当前指针指向的字节不是零时，会进行循环] 当当前指针指向的字节非零时回到循环，否则退出</td>
-<td><strong><a href="https://www.nayuki.io/page/brainfuck-interpreter-javascript">https://www.nayuki.io/page/brainfuck-interpreter-javascript</a></strong>*</td>
-</tr>
-</tbody></table>
-<h2 id="图形类编码"><a href="#图形类编码" class="headerlink" title="图形类编码"></a>图形类编码</h2><h3 id="摩斯电码"><a href="#摩斯电码" class="headerlink" title="摩斯电码"></a>摩斯电码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E6%91%A9%E5%B0%94%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86.jpg?raw=true"></p>
-<p>解码网址：</p>
-<p><a href="http://www.hiencode.com/morse.html">http://www.hiencode.com/morse.html</a></p>
-<h3 id="培根密码"><a href="#培根密码" class="headerlink" title="培根密码"></a>培根密码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81.jpg?raw=true"></p>
-<h3 id="猪圈密码"><a href="#猪圈密码" class="headerlink" title="猪圈密码"></a>猪圈密码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%8C%AA%E5%9C%88%E5%AF%86%E7%A0%81.png?raw=true"></p>
-<p>猪圈密码的变式</p>
-<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%8C%AA%E5%9C%88%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.jpg?raw=true"></p>
-<p>解码网址：<a href="http://www.hiencode.com/yd_pigpen.html">http://www.hiencode.com/yd_pigpen.html</a></p>
-<p>如果想了解更多的猪圈密码的变种，可以看一下这个网站：<br><a href="https://tieba.baidu.com/p/3938367567">https://tieba.baidu.com/p/3938367567</a></p>
-<h3 id="跳舞的小人"><a href="#跳舞的小人" class="headerlink" title="跳舞的小人"></a>跳舞的小人</h3><p>在线网站：<a href="https://www.dcode.fr/dancing-men-cipher">https://www.dcode.fr/dancing-men-cipher</a></p>
-<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E8%B7%B3%E8%88%9E%E7%9A%84%E5%B0%8F%E4%BA%BA.jpg?raw=true"></p>
-<h3 id="古灵精怪码"><a href="#古灵精怪码" class="headerlink" title="古灵精怪码"></a>古灵精怪码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E5%8F%A4%E7%B2%BE%E7%81%B5%E7%A0%81.jpg?raw=true"></p>
-<h3 id="象形文字"><a href="#象形文字" class="headerlink" title="象形文字"></a>象形文字</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E9%9D%9E%E6%96%AF%E7%9A%84%E8%B1%A1%E5%BD%A2%E6%96%87%E5%AD%97%E7%BF%BB%E8%AF%91%E5%9B%BE.png?raw=true"></p>
-<h3 id="盲文"><a href="#盲文" class="headerlink" title="盲文"></a>盲文</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%9B%B2%E6%96%87.jpg?raw=true"></p>
-<h3 id="音符加密"><a href="#音符加密" class="headerlink" title="音符加密"></a>音符加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E9%9F%B3%E7%AC%A6%E5%8A%A0%E5%AF%86.jpg?raw=true"></p>
-<h3 id="银河语言"><a href="#银河语言" class="headerlink" title="银河语言"></a>银河语言</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E9%93%B6%E6%B2%B3%E8%AF%AD%E8%A8%80.png?raw=true"></p>
-<h3 id="alphabet-minimoys"><a href="#alphabet-minimoys" class="headerlink" title="alphabet minimoys"></a>alphabet minimoys</h3><p>在线网站：<a href="https://www.dcode.fr/arthur-invisibles-cipher">https://www.dcode.fr/arthur-invisibles-cipher</a></p>
-<p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/alphabet%20minimoys.png?raw=true"></p>
-<h3 id="Pokemon-species"><a href="#Pokemon-species" class="headerlink" title="Pokemon species"></a>Pokemon species</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/Pokemon%20species.png?raw=true"></p>
-<h3 id="dtmf"><a href="#dtmf" class="headerlink" title="dtmf"></a>dtmf</h3><p>简单说就是手机不同按键对应不同的声音，看谱图解密。</p>
-<h2 id="文字类编码"><a href="#文字类编码" class="headerlink" title="文字类编码"></a>文字类编码</h2><h3 id="社会主义编码"><a href="#社会主义编码" class="headerlink" title="社会主义编码"></a>社会主义编码</h3><p>字符全部是社会主义核心价值观。</p>
-<p> <strong>在线工具：</strong></p>
-<p><a href="https://sym233.github.io/core-values-encoder/">社会主义编码</a></p>
-<h3 id="与佛论禅"><a href="#与佛论禅" class="headerlink" title="与佛论禅"></a>与佛论禅</h3><p>密文以”佛曰：如是我闻：”开头，密文一般是与关佛经的汉字</p>
-<p> <strong>在线工具：</strong></p>
-<p><a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx">与佛论禅</a></p>
-<h3 id="新与佛论禅"><a href="#新与佛论禅" class="headerlink" title="新与佛论禅"></a>新与佛论禅</h3><p>以“新佛曰：”开头的文字。</p>
-<p><strong>在线工具：</strong></p>
-<p><a href="http://hi.pcmoe.net/buddha.html">http://hi.pcmoe.net/buddha.html</a></p>
-<h3 id="当铺密码"><a href="#当铺密码" class="headerlink" title="当铺密码"></a>当铺密码</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E5%BD%93%E9%93%BA%E5%AF%86%E7%A0%81.jpg?raw=true"></p>
-<h2 id="通过按键产生的编码"><a href="#通过按键产生的编码" class="headerlink" title="通过按键产生的编码"></a>通过按键产生的编码</h2><h3 id="电脑键盘QWE加密"><a href="#电脑键盘QWE加密" class="headerlink" title="电脑键盘QWE加密"></a>电脑键盘QWE加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%94%B5%E8%84%91%E9%94%AE%E7%9B%98QWE%E5%8A%A0%E5%AF%86%E6%B3%95.jpg?raw=true"></p>
-<h3 id="电脑键盘棋盘加密"><a href="#电脑键盘棋盘加密" class="headerlink" title="电脑键盘棋盘加密"></a>电脑键盘棋盘加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%94%B5%E8%84%91%E9%94%AE%E7%9B%98%E6%A3%8B%E7%9B%98%E5%8A%A0%E5%AF%86.jpg?raw=true"></p>
-<h3 id="电脑键盘坐标加密"><a href="#电脑键盘坐标加密" class="headerlink" title="电脑键盘坐标加密"></a>电脑键盘坐标加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E7%94%B5%E8%84%91%E9%94%AE%E7%9B%98%E5%9D%90%E6%A0%87%E5%8A%A0%E5%AF%86.jpg?raw=true"></p>
-<h3 id="手机键盘加密"><a href="#手机键盘加密" class="headerlink" title="手机键盘加密"></a>手机键盘加密</h3><p><img src="https://github.com/Desdemonasyy/desdemonasyy.github.io/blob/main/2021/10/30/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93/%E7%BC%96%E7%A0%81%E6%80%BB%E7%BB%93%E5%9B%BE%E5%BA%93/%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.jpg?raw=true"></p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>CTF中的编码总结</tag>
       </tags>
   </entry>
 </search>
