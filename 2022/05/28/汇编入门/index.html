@@ -1,0 +1,835 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Desdemona">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="汇编入门基础知识机器指令与汇编语言的关系机器指令直观表示：101011100000 执行机器指令要通过：CPU 汇编语言-&gt;机器指令：编译器 机器指令(汇编指令)和数据存放在：内存（以二进制形式存放）、CPU（少部分） 内存相关知识内存的最小单元：字节&#x3D;2个十六进制为&#x3D;8个二进制位	1byte&#x3D;8bit 指令和数据在内存中没有区别，而在CPU中才能被区分 CPU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编入门">
+<meta property="og:url" content="http://example.com/2022/05/28/%E6%B1%87%E7%BC%96%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Desdemona&#39;s Blog">
+<meta property="og:description" content="汇编入门基础知识机器指令与汇编语言的关系机器指令直观表示：101011100000 执行机器指令要通过：CPU 汇编语言-&gt;机器指令：编译器 机器指令(汇编指令)和数据存放在：内存（以二进制形式存放）、CPU（少部分） 内存相关知识内存的最小单元：字节&#x3D;2个十六进制为&#x3D;8个二进制位	1byte&#x3D;8bit 指令和数据在内存中没有区别，而在CPU中才能被区分 CPU">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-28T02:10:49.000Z">
+<meta property="article:modified_time" content="2023-04-15T13:54:29.768Z">
+<meta property="article:author" content="Desdemona">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>汇编入门 - Desdemona&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="汇编入门"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-28 10:10" pubdate>
+          May 28, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          34 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">汇编入门</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="汇编入门"><a href="#汇编入门" class="headerlink" title="汇编入门"></a>汇编入门</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="机器指令与汇编语言的关系"><a href="#机器指令与汇编语言的关系" class="headerlink" title="机器指令与汇编语言的关系"></a>机器指令与汇编语言的关系</h3><p>机器指令直观表示：101011100000</p>
+<p>执行机器指令要通过：CPU</p>
+<p>汇编语言-&gt;机器指令：编译器</p>
+<p>机器指令(汇编指令)和数据存放在：内存（以二进制形式存放）、CPU（少部分）</p>
+<h3 id="内存相关知识"><a href="#内存相关知识" class="headerlink" title="内存相关知识"></a>内存相关知识</h3><p>内存的最小单元：字节&#x3D;2个十六进制为&#x3D;8个二进制位	1byte&#x3D;8bit</p>
+<p>指令和数据在内存中没有区别，而在CPU中才能被区分</p>
+<p>CPU和内存是通过电路联系的，这个电路需要有以下三种信息：</p>
+<ul>
+<li>内存编号：地址线——决定了CPU的寻址能力</li>
+<li>数据信息：数据线——决定了CPU和其他部件进行传送时，一次传送数据多少的能力</li>
+<li>读写信息：控制线—— 决定了CPU对其他部件进行控制的能力</li>
+</ul>
+<p>内存编号为什么从0开始：因为物理上的限制，电路上一根导线只能表示0或者1，所以最小为0</p>
+<p>寻址能力：就是能寻找多大的地址的能力，而这个能力是通过地址线的数量决定的，因为地址线的数量决定了这个电路上能传多少个0或者1</p>
+<p>补充知识：</p>
+<ul>
+<li>1KB的存储器有1024个存储单元，编号从0到1023</li>
+<li>8080，8088，80256，80386的地址总线宽度分别位16根，20根，24根，32根，则它们的寻址能力分别为：64KB，1MB，16MB，4GB</li>
+<li>8080，8088，8086，80286，80386的数据总线宽度分别为8根，8根，8根，16根，16根，32根一次可以传送的数据大小：1Byte，1Byte，2Byte，2Byte，4Byte</li>
+<li>从内存中读取1024字节的数据，8086至少要读512次，80386至少要读取256次。（除以单次）</li>
+</ul>
+<h3 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a><strong>内存空间</strong></h3><p>内存条 显存（？） （CPU给它们编号） ROM</p>
+<h3 id="主板："><a href="#主板：" class="headerlink" title="主板："></a><strong>主板</strong>：</h3><p>CPU</p>
+<h3 id="端口："><a href="#端口：" class="headerlink" title="端口："></a><strong>端口</strong>：</h3><p>读取写入 控制线 读写信息</p>
+<p>几个的关系：</p>
+<ul>
+<li>CPU——大脑（CPU得到数据——大脑得到反馈）</li>
+<li>主板——人体骨骼</li>
+<li>主板上的电路——骨骼上的神经</li>
+</ul>
+<p>汇编指令可以修改寄存器中的内容，从而控制CPU，进而控制整个计算机</p>
+<p>寄存器：存放地址信息和数据信息的地方</p>
+<h3 id="通用寄存器："><a href="#通用寄存器：" class="headerlink" title="通用寄存器："></a>通用寄存器：</h3><p>def：存放<strong>数据</strong>的16位寄存器，特殊之处在于都能各自分割为2个8位寄存器</p>
+<p>AX：AH+AL	AX的高八位构成了AH，低八位构成了AL</p>
+<p>BX：BH+BL</p>
+<p>CX：CH+CL</p>
+<p>DX: DH+DL</p>
+<p>数据存放：</p>
+<p>字节型数据——8位寄存器中</p>
+<p>字型数据——16位寄存器中</p>
+<p>其中高位字节放在AH,BH,CH,DH；低位字节放在AL,BL,CL,DL</p>
+<p>其中高地址内存单元存放字型数据的高位字节；低地址内存单元存放字型数据的低位字节</p>
+<p>（比如<code>4E20H</code>，<code>4EH</code>是高位，<code>20H</code>是低位，内存里存放方式是<code>20 4E</code>）</p>
+<p>注意点：数据与寄存器要保持一致性，寄存器之间也要保证一致性</p>
+<p>八位寄存器进行八位运算只保存八位数据（通用寄存器在八位运算时两个寄存器是互相独立的）</p>
+<h3 id="内存的表示方式："><a href="#内存的表示方式：" class="headerlink" title="内存的表示方式："></a>内存的表示方式：</h3><p>段地址：偏移地址</p>
+<p>段地址寄存器：偏移地址寄存器(这些寄存器都是16位的)</p>
+<table>
+<thead>
+<tr>
+<th>段地址寄存器</th>
+<th>偏移地址寄存器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DS(访问数据)</td>
+<td>SI</td>
+</tr>
+<tr>
+<td>ES</td>
+<td>BP</td>
+</tr>
+<tr>
+<td>SS(与栈有关)</td>
+<td>SP(与栈有关)</td>
+</tr>
+<tr>
+<td>CS(与指令有关)</td>
+<td>IP(与指令有关)</td>
+</tr>
+<tr>
+<td></td>
+<td>DI</td>
+</tr>
+<tr>
+<td></td>
+<td>BX</td>
+</tr>
+</tbody></table>
+<h3 id="地址加法器"><a href="#地址加法器" class="headerlink" title="地址加法器"></a>地址加法器</h3><p>对于8086：</p>
+<p>8086中CPU给了20根地址线，但是上述的寄存器只有16位。由于地址线的数量是决定CPU的寻址能力的。现在20根线只用了16根，限制了CPU的表达能力。</p>
+<p>因此引入了个新的东西——地址加法器：</p>
+<p>def：地址的计算方式</p>
+<p>作用：增加CPU的表达能力，也就是能表示更多的地址</p>
+<p>形象化理解：</p>
+<p><em>假如两个人通信时只能用三位以内的数字（0-999）进行交流，那如何表达2560这个数字呢？</em></p>
+<p><em><strong>可以约定接受到的第一串数字乘一个倍数再加上接收到的第二串数字</strong></em></p>
+<p><em>be like：第一串：250，第二串：60，然后约定第一串数字乘10再加上第二串，这样就做到了用三位以内的数字表示四位数（方式不唯一）</em></p>
+<p>公式：</p>
+<p>段地址 × 16（10H） &#x3D; 基础地址</p>
+<p>段地址 × 16（10H） + 偏移地址 &#x3D; 物理地址</p>
+<p>基础地址 + 偏移地址 &#x3D; 物理地址</p>
+<p>注：如果段地址选取的过小，则有可能永远找不到最终的物理地址（由于偏移地址是有限的，即0~FFFFH）</p>
+<p>总结：写成<strong>段地址：偏移地址</strong>的原因是：因为8086CPU有20根地址线，16位寄存器无法完全使用完这20根，所以用这种方式来扩充地址的表示范围。</p>
+<p>例题：有一个数据存放在内存20000H的单元中，现在给段地址SA，若想用偏移地址寻找到此单元，则SA应该满足的条件范围是多少？</p>
+<p>​	【分析】也就是要考虑段地址给多少时，CPU无论怎么改变偏移地址都无法找到20000H<br>$$<br>最大:SA<em>10H+0&#x3D;20000H\Rightarrow SA&#x3D;2000H \<br>最小:SA</em>10H+FFFFH&#x3D;20000H\Rightarrow SA&#x3D;1001H\<br>这里要注意，不是1000H，因为1000H*10+FFFFH&#x3D;1FFFFH<br>$$<br>CPU是如何区分指令和数据的？</p>
+<p>在8086的CPU中，在任意时刻CPU将CS:IP所指向的内容全部当作指令来执行，也就是说，CS和IP决定了CPU从哪里开始读取指令</p>
+<p><em>而在内存中，指令和数据是不进行区分的</em></p>
+<h2 id="栈："><a href="#栈：" class="headerlink" title="栈："></a>栈：</h2><h3 id="存储内容"><a href="#存储内容" class="headerlink" title="存储内容"></a>存储内容</h3><p>数据类型：只能是字型数据</p>
+<p>数据来源：寄存器、内存</p>
+<h3 id="栈顶标记："><a href="#栈顶标记：" class="headerlink" title="栈顶标记："></a>栈顶标记：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs assembly">SS 段地址寄存器<br>SP 偏移地址寄存器	; SS:SP = 栈顶标记<br></code></pre></td></tr></table></figure>
+
+<h3 id="指令："><a href="#指令：" class="headerlink" title="指令："></a>指令：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs assembly">push [寄存器] 入栈 将寄存器的字型数据放入SS中，然后改SP的值(-2n)<br>pop  [寄存器] 出栈 将SS的字型数据放入寄存器中，然后改SP的值(+2n)<br></code></pre></td></tr></table></figure>
+
+<h3 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h3><p>临时性保存数据</p>
+<h3 id="如何设置栈？"><a href="#如何设置栈？" class="headerlink" title="如何设置栈？"></a>如何设置栈？</h3><p>起始地址(SS) + 你所设定的站的大小的字节数(16n)</p>
+<h3 id="越界问题："><a href="#越界问题：" class="headerlink" title="越界问题："></a>越界问题：</h3><p>8086没有提供一个寄存器来限制栈的上限或者下限，所以只能靠预先估计大小来分配</p>
+<h3 id="最大空间设置："><a href="#最大空间设置：" class="headerlink" title="最大空间设置："></a>最大空间设置：</h3><p>SP寄存器的取值范围为<code>0~FFFFH</code>那么就是能装32768个字型数据(65536÷2)，要设置最大的话，只需要SP初始值为0即可</p>
+<p>补：如果再进行了一轮入栈后，SP又回到了0，那么再下一个入栈则会覆盖原有的内容</p>
+<h2 id="内存段的安全问题"><a href="#内存段的安全问题" class="headerlink" title="内存段的安全问题"></a>内存段的安全问题</h2><p>内存段的内部结构：数据段 代码段 栈段</p>
+<p>但是如果随意地向某一段内存空间中写入内容是非常危险的，比如：</p>
+<p>使用mov指令的时候，如果不小心修改了内存中重要的数据或者指令会导致程序的崩溃甚至是系统的崩溃。</p>
+<p>那么如何安排安全的地方给数据段，代码段，栈段呢？</p>
+<p>使用操作系统分配的内存空间。在操作系统的环境中，合法地通过操作系统取得的内存空间都是安全的。因为操作系统的作用是管理内存，它不会让一个程序所使用的内存空间和其他程序以及系统自己的空间产生冲突。</p>
+<p>操作系统为程序分配内存有两种情况：</p>
+<ol>
+<li>系统加载程序时为程序分配内存</li>
+<li>系统执行时向系统申请内存</li>
+</ol>
+<h2 id="DOSbox"><a href="#DOSbox" class="headerlink" title="DOSbox"></a>DOSbox</h2><h3 id="相应指令："><a href="#相应指令：" class="headerlink" title="相应指令："></a>相应指令：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs assembly">-r 可以查看和改变寄存器中的内容<br>	;直接-r可以查看寄存器内容，如果是-r [寄存器] 则可以修改值<br>-d 可以查看内存中的内容<br>	;-d [段地址:偏移地址]; -d [段地址:偏移地址(头) 偏移地址(尾)]<br>-u 可以将内存中的机器指令翻译成汇编指令<br>	;-u [段地址:偏移地址]<br>-a 可以以汇编指令的格式在内存中写入一条汇编指令<br>	;要改特定位置是先 -a [段地址:偏移地址] 然后再写入指令<br>	;改完执行的时候要先 -r [寄存器]去修改cs和ip的指，让他们指到刚刚编程的地方<br>-t 执行当前CS：IP所指向的机器指令<br>-e 可以改写内存中的内容 <br>	;-e [段地址:偏移地址] 可以直接写入机器码，按空格直接补0<br>	;-e [段地址:偏移地址] &quot;字符串&quot; 可将右边的字符改成&quot;&quot;内的东西<br>	<br>debug [程序名];进行程序的跟踪<br>	;其中显示出来的cx=程序长度<br>	-p 执行int指令<br>	-q 退出<br></code></pre></td></tr></table></figure>
+
+<h2 id="代码相关"><a href="#代码相关" class="headerlink" title="代码相关"></a>代码相关</h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>指令是有长度的，一条指令可以由多个字节构成</p>
+<h3 id="指令的执行过程："><a href="#指令的执行过程：" class="headerlink" title="指令的执行过程："></a>指令的执行过程：</h3><ol>
+<li>CPU从CS:IP所指向的内存单元读取指令，存放到指令缓存器中</li>
+<li>IP &#x3D; IP + 所读指令的长度 → 下一条指令</li>
+<li>执行指令缓存器中的内容，回到第一步</li>
+</ol>
+<h3 id="汇编指令"><a href="#汇编指令" class="headerlink" title="汇编指令"></a>汇编指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs assembly">jmp ——转移指令:可以修改CS和IP这2个寄存器（它们决定了CPU从哪开始读取指令）<br>	jmp 2000:0<br>	jmp [寄存器]<br>	jmp tag;代码中进行跳转<br>call ——转移指令:跟jmp比多了保存IP的数据这一步，存到了内存里（函数调用）<br>ret ——转移指令:将call指令执行后保存的数据取出，还给IP，跳转到call的下一条指令（返回主函数）<br>add ——加法指令:左 = 左 + 右<br>	;（左:寄存器，右:数据,寄存器,[偏移地址]；左:[偏移地址]，右:寄存器）<br>sub ——减法指令:左 = 左 - 右<br>	;（左:寄存器，右:数据,寄存器,[偏移地址]；左:[偏移地址]，右:寄存器）<br>mov ——移动指令:将右边的数据移动到左边<br>	mov [寄存器] [寄存器]<br>	mov [寄存器] [寄存器]:[偏移地址];偏移地址的括号要加上,debug里直接写[偏移地址就行]<br>	mov [寄存器]:[偏移地址] [寄存器]<br></code></pre></td></tr></table></figure>
+
+<p> 注：不能使用下面的方式，8086没提供，必须通过jmp指令完成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs assembly">mov cs,2000<br>mov ip,0<br></code></pre></td></tr></table></figure>
+
+<p>补充知识：</p>
+<p>PC机主板上的ROM中写有一个生产日期，在内存<code>FFF00H~FFFFFH</code>的某几个单元中。（但是如果是DOSbox软件的话，这部分只能读不能修改）要修改只能在DOS系统中修改</p>
+<h3 id="PSP区"><a href="#PSP区" class="headerlink" title="PSP区"></a>PSP区</h3><p>从<code>ds:0</code>开始的256个字节</p>
+<p>用来进行系统和程序之间的通信</p>
+<h3 id="框架："><a href="#框架：" class="headerlink" title="框架："></a>框架：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs assembly">assume cs:code,ds:data,ss:stack<br>;这么取名的原因:cs与指令有关，ds与数据有关，ss与栈有关<br>data segment ;data段从这开始<br>...<br>mov ah, 4c00h<br>int 21h<br>data ends;data段在这结束 <br>;作用：分配内存，名字随意取 只要与上面assume一致即可<br></code></pre></td></tr></table></figure>
+
+<p>分支</p>
+<p>循环</p>
+<p>loop 循环指令：<br>循环次数保存在cx寄存器</p>
+<p>执行步骤：</p>
+<ol>
+<li>cx &#x3D; cx -1</li>
+<li>判断cx的值，不为零则跳转到标号位置继续执行，为0则执行下面的指令。</li>
+</ol>
+<p>子程序调用</p>
+<p>输入输出</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A1%AC%E4%BB%B6/" class="category-chain-item">硬件</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>汇编入门</div>
+      <div>http://example.com/2022/05/28/汇编入门/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Desdemona</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 28, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/15/51%E5%8D%95%E7%89%87%E6%9C%BA/" title="51单片机">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">51单片机</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/07/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="编码总结">
+                        <span class="hidden-mobile">编码总结</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

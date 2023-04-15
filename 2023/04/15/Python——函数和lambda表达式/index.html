@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Desdemona">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="函数和lambda表达式定义函数格式123def 函数名(形参列表):    #由零条到多条可执行语句组成的函数    [return [返回值]]  注意点 形参列表：形参列表由多个形参名组成，多个形参名之间以英文逗号(,)隔开。 一旦在定义函数指定了形参列表，调用该函数 就必须传入到对应的参数值一一谁调用函数，谁负责为形参赋值 在函数体中多条可执行语句之间有严格的执行顺序，排在函数体前面的语句">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数和lambda表达式">
+<meta property="og:url" content="http://example.com/2023/04/15/Python%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8Clambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Desdemona&#39;s Blog">
+<meta property="og:description" content="函数和lambda表达式定义函数格式123def 函数名(形参列表):    #由零条到多条可执行语句组成的函数    [return [返回值]]  注意点 形参列表：形参列表由多个形参名组成，多个形参名之间以英文逗号(,)隔开。 一旦在定义函数指定了形参列表，调用该函数 就必须传入到对应的参数值一一谁调用函数，谁负责为形参赋值 在函数体中多条可执行语句之间有严格的执行顺序，排在函数体前面的语句">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/Python%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8Clambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20230406215922434.png">
+<meta property="article:published_time" content="2023-04-15T12:29:48.610Z">
+<meta property="article:modified_time" content="2023-04-15T13:58:19.100Z">
+<meta property="article:author" content="Desdemona">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/Python%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8Clambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20230406215922434.png">
+  
+  
+  
+  <title>函数和lambda表达式 - Desdemona&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="函数和lambda表达式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-15 20:29" pubdate>
+          April 15, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">函数和lambda表达式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="函数和lambda表达式"><a href="#函数和lambda表达式" class="headerlink" title="函数和lambda表达式"></a>函数和lambda表达式</h1><h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">函数名</span>(<span class="hljs-params">形参列表</span>):<br>    <span class="hljs-comment">#由零条到多条可执行语句组成的函数</span><br>    [<span class="hljs-keyword">return</span> [返回值]]<br></code></pre></td></tr></table></figure>
+
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
+<li>形参列表：形参列表由多个形参名组成，多个形参名之间以英文逗号(,)隔开。 一旦在定义函数指定了形参列表，调用该函数 就必须传入到对应的参数值一一谁调用函数，谁负责为形参赋值</li>
+<li>在函数体中多条可执行语句之间有严格的执行顺序，排在函数体前面的语句总是先执行，排在函数体后面的语句总是后执行。</li>
+</ul>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">def my<span class="hljs-constructor">_max(<span class="hljs-params">x</span>,<span class="hljs-params">y</span>)</span>:<br>    return x <span class="hljs-keyword">if</span> x &gt;y <span class="hljs-keyword">else</span> y<br>a = <span class="hljs-number">6</span><br>b = <span class="hljs-number">9</span><br>print(&#x27;result:%d&#x27;%(my<span class="hljs-constructor">_max(<span class="hljs-params">a</span>,<span class="hljs-params">b</span>)</span>))<br></code></pre></td></tr></table></figure>
+
+<h2 id="为函数提供文档"><a href="#为函数提供文档" class="headerlink" title="为函数提供文档"></a>为函数提供文档</h2><p>我们还可以为函数编写说明文档——只要把一段字符串放在放在函数声明之后、函数体之前，这段字符串将被作为函数的部分，这个文档就是函数的说明文档。</p>
+<p>程序既可通过 help()函数查看函数的说明文档，也可通过函数的__doc__属性访问函数的说明文档。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">my_max</span>(<span class="hljs-params">x,y</span>):<br>    <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">    这是一个获取两个数值之间较大数的函数</span><br><span class="hljs-string">    </span><br><span class="hljs-string">    my_max(x,y)</span><br><span class="hljs-string">        返回一个变量z，该变量等于x、y中较大的值</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-comment">#直接返回一个表达式</span><br>    <span class="hljs-keyword">return</span> x <span class="hljs-keyword">if</span> x &gt; y <span class="hljs-keyword">else</span> y<br><span class="hljs-built_in">help</span>(my_max)<br><span class="hljs-built_in">print</span>(my_max.__doc__)<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>Help on function my_max <span class="hljs-keyword">in</span> module __main__:<br><br>my_max(x, y)<br>    这是一个获取两个数值之间较大数的函数<br>    <br>    my_max(x,y)<br>        返回一个变量z，该变量等于x、y中较大的值<br><br><span class="hljs-comment">#这个是print(my_max.__doc__)</span><br>    这是一个获取两个数值之间较大数的函数<br>    <br>    my_max(x,y)<br>        返回一个变量z，该变量等于x、y中较大的值<br>    <br></code></pre></td></tr></table></figure>
+
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>传参的时候要注意，都用位置参数的时候传入参数位置和关键字逐一对应，要是都用关键字参数就只用关键字等于参数对应就行，要是混合的话，位置参数要在关键字参数之前。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">girth</span>(<span class="hljs-params">width,height</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;width:&quot;</span>,width)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;height:&quot;</span>,height)<br>    <span class="hljs-keyword">return</span> width+height<br><span class="hljs-built_in">print</span>(girth(<span class="hljs-number">3.5</span>,<span class="hljs-number">4.8</span>))<br><span class="hljs-built_in">print</span>(girth(height=<span class="hljs-number">4.8</span>,width=<span class="hljs-number">3.5</span>))<br><span class="hljs-built_in">print</span>(girth(<span class="hljs-number">3.5</span>,height=<span class="hljs-number">4.8</span>))<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>width: <span class="hljs-number">3.5</span><br>height: <span class="hljs-number">4.8</span><br><span class="hljs-number">8.3</span><br>width: <span class="hljs-number">3.5</span><br>height: <span class="hljs-number">4.8</span><br><span class="hljs-number">8.3</span><br>width: <span class="hljs-number">3.5</span><br>height: <span class="hljs-number">4.8</span><br><span class="hljs-number">8.3</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">如果是print(grith(width=3.5,4.8))就会报错哦</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h3><p>在函数中传参的括号里先赋值，这样对应的参数在调用中没有赋值的话就会调用默认值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">triangle</span>(<span class="hljs-params">a=<span class="hljs-number">3</span>,b=<span class="hljs-number">4</span>,c=<span class="hljs-number">5</span></span>):<br>    <span class="hljs-built_in">print</span>(a,b,c)<br>    <span class="hljs-keyword">return</span> a+b+c<br><span class="hljs-built_in">print</span>(triangle())<br><span class="hljs-built_in">print</span>(triangle(<span class="hljs-number">2</span>,<span class="hljs-number">6</span>))<br><span class="hljs-built_in">print</span>(triangle(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>))<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br><span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span><br><span class="hljs-number">12</span><br><span class="hljs-number">2</span> <span class="hljs-number">6</span> <span class="hljs-number">5</span><br><span class="hljs-number">13</span><br><span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">6</span><br><span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="参数收集-个数可变的参数"><a href="#参数收集-个数可变的参数" class="headerlink" title="参数收集(个数可变的参数)"></a>参数收集(个数可变的参数)</h3><p>Python 允许在形参前面添加一个星号(*)，这样就意味着该参数可接收多个参数值，多个参数值被当成元组传入。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-string">&#x27;&#x27;&#x27;代码一&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">message</span>(<span class="hljs-params">num,*animal</span>):<br>    <span class="hljs-built_in">print</span>(animal)<br>    <span class="hljs-built_in">print</span>(num)<br>message(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;cat&#x27;</span>,<span class="hljs-string">&#x27;dog&#x27;</span>,<span class="hljs-string">&#x27;fox&#x27;</span>)<br><span class="hljs-string">&#x27;&#x27;&#x27;代码二&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">message</span>(<span class="hljs-params">*animal,num</span>):<br>    <span class="hljs-built_in">print</span>(animal)<br>    <span class="hljs-built_in">print</span>(num)<br>message(<span class="hljs-string">&#x27;cat&#x27;</span>,<span class="hljs-string">&#x27;dog&#x27;</span>,<span class="hljs-string">&#x27;fox&#x27;</span>,num=<span class="hljs-number">3</span>)<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>(<span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;dog&#x27;</span>, <span class="hljs-string">&#x27;fox&#x27;</span>)<br><span class="hljs-number">3</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">message</span>(<span class="hljs-params">**animal</span>):<br>    <span class="hljs-built_in">print</span>(animal)<br>message(cat=<span class="hljs-number">10</span>,dog=<span class="hljs-number">20</span>,fox=<span class="hljs-number">30</span>)<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>&#123;<span class="hljs-string">&#x27;cat&#x27;</span>: <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;dog&#x27;</span>: <span class="hljs-number">20</span>, <span class="hljs-string">&#x27;fox&#x27;</span>: <span class="hljs-number">30</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="关于变量作用域的函数"><a href="#关于变量作用域的函数" class="headerlink" title="关于变量作用域的函数"></a>关于变量作用域的函数</h2><p>作用域又可以被称为命名空间，指变量起作用的范围。Python变量作用域可以分为四种，分别为局部作用域、嵌套作用域、全局作用域、内置作用域。四种作用域中变量的调用顺序采取“就近原则”，即为 LEGB。</p>
+<table>
+<thead>
+<tr>
+<th>作用域</th>
+<th>英文</th>
+<th>简写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>局部作用域</td>
+<td>Local</td>
+<td>L</td>
+</tr>
+<tr>
+<td>嵌套作用域</td>
+<td>Enclosed</td>
+<td>E</td>
+</tr>
+<tr>
+<td>全局作用域</td>
+<td>Global</td>
+<td>G</td>
+</tr>
+<tr>
+<td>内置作用域</td>
+<td>Built-in</td>
+<td>B</td>
+</tr>
+</tbody></table>
+<p><img src="/./Python%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8Clambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20230406215922434.png" srcset="/img/loading.gif" lazyload alt="image-20230406215922434"></p>
+<p>Python语法规定在函数内部对不存在的变量赋值时， 默认就是重新定义新的局部变量。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py">name = <span class="hljs-string">&#x27;Tom&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>():<br>    <span class="hljs-keyword">global</span> name	<span class="hljs-comment">#name现在就变成了全局变量，这样就不会再被定义成局部变量了</span><br>    <span class="hljs-built_in">print</span>(name)<br>    name = <span class="hljs-string">&#x27;Jerry&#x27;</span> <span class="hljs-comment">#全局变量改变，函数外面也会改变</span><br>test()<br><span class="hljs-built_in">print</span>(name)	<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>Tom<br>Jerry<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">name = <span class="hljs-string">&#x27;Tom&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>():<br>    name = <span class="hljs-string">&#x27;Jerry&#x27;</span><br>    <span class="hljs-built_in">print</span>(name)	<span class="hljs-comment">#这里仅仅只是函数内name改变了，函数外没变</span><br>test()<br><span class="hljs-built_in">print</span>(name)<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>Jerry<br>Tom<br></code></pre></td></tr></table></figure>
+
+<h2 id="局部函数"><a href="#局部函数" class="headerlink" title="局部函数"></a>局部函数</h2><p>？没看懂QAQ</p>
+<h2 id="使用函数变量"><a href="#使用函数变量" class="headerlink" title="使用函数变量"></a>使用函数变量</h2><p>Python函数也是一种值：所有函数都是function对象，这意味着可以把函数本身赋值给变量，就像把整数、浮点数、列表、元组赋值给变量一样。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#定义一个计算乘方的函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">pow</span>(<span class="hljs-params">base,exponent</span>):<br>    result = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, exponent +<span class="hljs-number">1</span>):<br>        result *= base<br>    <span class="hljs-keyword">return</span> result<br>my_fun = <span class="hljs-built_in">pow</span>    <span class="hljs-comment">#把pow函数值赋给my_fun，这个时候my_fun可以当作pow使用</span><br><span class="hljs-built_in">print</span>(my_fun(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)) <span class="hljs-comment">#结果为81</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="使用函数作为参数形参"><a href="#使用函数作为参数形参" class="headerlink" title="使用函数作为参数形参"></a>使用函数作为参数形参</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#定义函数类型的形参，其中fn是一个函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">map</span>(<span class="hljs-params">data,fn</span>):<br>    result = []<br>    <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> data:<br>        result.append(fn(e))<br>    <span class="hljs-keyword">return</span> result<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">square</span>(<span class="hljs-params">n</span>):<br>    <span class="hljs-keyword">return</span> n *n <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">cube</span>(<span class="hljs-params">n</span>):<br>    <span class="hljs-keyword">return</span> n * n * n<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">factorial</span>(<span class="hljs-params">n</span>):<br>    result = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>,n+<span class="hljs-number">1</span>):<br>        result *= index<br>    <span class="hljs-keyword">return</span> result<br>data = [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">8</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;original data:&quot;</span>,data)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;square:&quot;</span>,<span class="hljs-built_in">map</span>(data,square))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;cube:&quot;</span>,<span class="hljs-built_in">map</span>(data,cube))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;factorial:&quot;</span>,<span class="hljs-built_in">map</span>(data,factorial))<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>original data: [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>]<br>square: [<span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">81</span>, <span class="hljs-number">25</span>, <span class="hljs-number">64</span>]<br>cube: [<span class="hljs-number">27</span>, <span class="hljs-number">64</span>, <span class="hljs-number">729</span>, <span class="hljs-number">125</span>, <span class="hljs-number">512</span>]<br>factorial: [<span class="hljs-number">6</span>, <span class="hljs-number">24</span>, <span class="hljs-number">362880</span>, <span class="hljs-number">120</span>, <span class="hljs-number">40320</span>]<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用函数作为返回值"><a href="#使用函数作为返回值" class="headerlink" title="使用函数作为返回值"></a>使用函数作为返回值</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_math_func</span>(<span class="hljs-params"><span class="hljs-built_in">type</span></span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">square</span>(<span class="hljs-params">n</span>):<br>        <span class="hljs-keyword">return</span> n*n<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">cube</span>(<span class="hljs-params">n</span>):<br>        <span class="hljs-keyword">return</span> n*n*n<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">factorial</span>(<span class="hljs-params">n</span>):<br>        result =<span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>,n+<span class="hljs-number">1</span>):<br>            result *= index<br>        <span class="hljs-keyword">return</span> result<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> == <span class="hljs-string">&quot;square&quot;</span>:<br>        <span class="hljs-keyword">return</span> square<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> == <span class="hljs-string">&quot;cube&quot;</span>:<br>        <span class="hljs-keyword">return</span> cube<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> factorial<br>func1 = get_math_func(<span class="hljs-string">&quot;cube&quot;</span>)<br>func2 = get_math_func(<span class="hljs-string">&quot;square&quot;</span>)<br>func3 = get_math_func(<span class="hljs-string">&quot;factorial&quot;</span>)<br><span class="hljs-built_in">print</span>(func1(<span class="hljs-number">5</span>),func2(<span class="hljs-number">5</span>),func3(<span class="hljs-number">5</span>))<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br><span class="hljs-number">125</span> <span class="hljs-number">25</span> <span class="hljs-number">120</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><p>单行的代码是可以通过lambda表达式简化的</p>
+<h3 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">lambda</span> [parameter_list] : 表达式<br></code></pre></td></tr></table></figure>
+
+<h3 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h3><ul>
+<li>lambda表达式必须使用lambda关键字定义</li>
+<li>在lambda关键字之后、冒号左边的是参数列表，参数可以有多个(用逗号隔开)，也可以没有，冒号右边是表达式的返回值。</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_math_func</span>(<span class="hljs-params"><span class="hljs-built_in">type</span></span>):<br>    result = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> == <span class="hljs-string">&quot;square&quot;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> n: n*n<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> == <span class="hljs-string">&quot;cube&quot;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> n : n*n*n<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> n: (<span class="hljs-number">1</span>+n)*n/<span class="hljs-number">2</span><br>func1 = get_math_func(<span class="hljs-string">&quot;cube&quot;</span>)<br>func2 = get_math_func(<span class="hljs-string">&quot;square&quot;</span>)<br>func3 = get_math_func(<span class="hljs-string">&quot;factorial&quot;</span>)<br><span class="hljs-built_in">print</span>(func1(<span class="hljs-number">5</span>),func2(<span class="hljs-number">5</span>),func3(<span class="hljs-number">5</span>))<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br><span class="hljs-number">125</span> <span class="hljs-number">25</span> <span class="hljs-number">15.0</span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>函数和lambda表达式</div>
+      <div>http://example.com/2023/04/15/Python——函数和lambda表达式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Desdemona</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 15, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/15/Python%E2%80%94%E2%80%94%E5%88%97%E8%A1%A8%E3%80%81%E5%85%83%E7%BB%84%E5%92%8C%E5%AD%97%E5%85%B8/" title="列表、元组和字典">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">列表、元组和字典</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/15/Python%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E7%AE%80%E5%8D%95%E7%B1%BB%E5%9E%8B/" title="变量和简单类型">
+                        <span class="hidden-mobile">变量和简单类型</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

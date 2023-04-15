@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Desdemona">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Solidity教程from https:&#x2F;&#x2F;cryptozombies.io&#x2F; 合约概述Solidity 的代码都包裹在合约里面。一份合约就是以太币应用的基本模块， 所有的变量和函数都属于一份合约, 它是你所有应用的起点。 版本指令所有的 Solidity 源码都必须冠以 “version pragma” — 标明 Solidity 编译器的版本. 以避免将来新的编译器可能破坏你的代码。 例如:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solidity教程">
+<meta property="og:url" content="http://example.com/2023/04/15/Solidity%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Desdemona&#39;s Blog">
+<meta property="og:description" content="Solidity教程from https:&#x2F;&#x2F;cryptozombies.io&#x2F; 合约概述Solidity 的代码都包裹在合约里面。一份合约就是以太币应用的基本模块， 所有的变量和函数都属于一份合约, 它是你所有应用的起点。 版本指令所有的 Solidity 源码都必须冠以 “version pragma” — 标明 Solidity 编译器的版本. 以避免将来新的编译器可能破坏你的代码。 例如:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-15T12:29:48.626Z">
+<meta property="article:modified_time" content="2023-04-15T13:50:31.961Z">
+<meta property="article:author" content="Desdemona">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Solidity教程 - Desdemona&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Solidity教程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-15 20:29" pubdate>
+          April 15, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          68 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Solidity教程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Solidity教程"><a href="#Solidity教程" class="headerlink" title="Solidity教程"></a>Solidity教程</h1><p>from <a target="_blank" rel="noopener" href="https://cryptozombies.io/">https://cryptozombies.io/</a></p>
+<h2 id="合约"><a href="#合约" class="headerlink" title="合约"></a>合约</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Solidity 的代码都包裹在<strong>合约</strong>里面。一份合约就是以太币应用的基本模块， 所有的变量和函数都属于一份合约, 它是你所有应用的起点。</p>
+<h3 id="版本指令"><a href="#版本指令" class="headerlink" title="版本指令"></a>版本指令</h3><p>所有的 Solidity 源码都必须冠以 “version pragma” — 标明 Solidity 编译器的版本. 以避免将来新的编译器可能破坏你的代码。</p>
+<p>例如: <code>pragma solidity ^0.4.19;</code> (当前 Solidity 的最新版本是 0.4.19)。如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs solidity">pragma solidity ^0.4.19;<br><br>contract HelloWorld &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="引入（Import）"><a href="#引入（Import）" class="headerlink" title="引入（Import）"></a>引入（Import）</h2><p>在 Solidity 中，当你有多个文件并且想把一个文件导入另一个文件时，可以使用 <code>import</code> 语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs solidity">import &quot;./someothercontract.sol&quot;;<br><br>contract newContract is SomeOtherContract &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样当我们在合约（contract）目录下有一个名为 <code>someothercontract.sol</code> 的文件（ <code>./</code> 就是同一目录的意思），它就会被编译器导入。</p>
+<h2 id="状态变量和整数"><a href="#状态变量和整数" class="headerlink" title="状态变量和整数"></a>状态变量和整数</h2><p><strong>状态变量</strong>是被永久地保存在合约中。也就是说它们被写入以太币区块链中. 想象成写入一个数据库。</p>
+<p>例子:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract Example &#123;<br>  // 这个无符号整数将会永久的被保存在区块链中<br>  uint myUnsignedInteger = 100;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在上面的例子中，定义 <code>myUnsignedInteger</code> 为 <code>uint</code> 类型，并赋值100。</p>
+<h3 id="无符号整数-uint"><a href="#无符号整数-uint" class="headerlink" title="无符号整数: uint"></a>无符号整数: <code>uint</code></h3><p><code>uint</code> 无符号数据类型， 指<strong>其值不能是负数</strong>，对于有符号的整数存在名为 <code>int</code> 的数据类型。</p>
+<blockquote>
+<p>注: Solidity中， <code>uint</code> 实际上是 <code>uint256</code>代名词， 一个256位的无符号整数。你也可以定义位数少的uints — <code>uint8</code>， <code>uint16</code>， <code>uint32</code>， 等……</p>
+</blockquote>
+<h2 id="Storage与Memory"><a href="#Storage与Memory" class="headerlink" title="Storage与Memory"></a>Storage与Memory</h2><p>在 Solidity 中，有两个地方可以存储变量 —— <code>storage</code> 或 <code>memory</code>。</p>
+<p><strong>Storage</strong> 变量是指永久存储在区块链中的变量。 </p>
+<p><strong>Memory</strong> 变量则是临时的，当外部函数对某合约调用完成时，内存型变量即被移除。 你可以把它想象成存储在你电脑的硬盘或是RAM中数据的关系。</p>
+<p>但大多数时候你都用不到这些关键字，默认情况下 Solidity 会自动处理它们。 <strong>状态变量（在函数之外声明的变量）默认为“Storage”形式，并永久写入区块链；而在函数内部声明的变量是“Memory”型的，它们函数调用结束后消失。</strong></p>
+<p>然而也有一些情况下，你需要<strong>手动声明存储类型</strong>，主要用于处理函数内的<strong>结构体</strong>和<strong>数组</strong>时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract SandwichFactory &#123;<br>  struct Sandwich &#123;<br>    string name;<br>    string status;<br>  &#125;<br><br>  Sandwich[] sandwiches;<br><br>  function eatSandwich(uint _index) public &#123;<br>    // Sandwich mySandwich = sandwiches[_index];<br><br>    // ^ 看上去很直接，不过 Solidity 将会给出警告<br>    // 告诉你应该明确在这里定义 `storage` 或者 `memory`。<br><br>    // 所以你应该明确定义 `storage`:<br>    Sandwich storage mySandwich = sandwiches[_index];<br>    // ...这样 `mySandwich` 是指向 `sandwiches[_index]`的指针<br>    // 在存储里，另外...<br>    mySandwich.status = &quot;Eaten!&quot;;<br>    // ...这将永久把 `sandwiches[_index]` 变为区块链上的存储<br><br>    // 如果你只想要一个副本，可以使用`memory`:<br>    Sandwich memory anotherSandwich = sandwiches[_index + 1];<br>    // ...这样 `anotherSandwich` 就仅仅是一个内存里的副本了<br>    // 另外<br>    anotherSandwich.status = &quot;Eaten!&quot;;<br>    // ...将仅仅修改临时变量，对 `sandwiches[_index + 1]` 没有任何影响<br>    // 不过你可以这样做:<br>    sandwiches[_index + 1] = anotherSandwich;<br>    // ...如果你想把副本的改动保存回区块链存储<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h2><p>在 Solidity 中，数学运算很直观明了，与其它程序设计语言相同:</p>
+<ul>
+<li>加法: <code>x + y</code></li>
+<li>减法: <code>x - y</code>,</li>
+<li>乘法: <code>x * y</code></li>
+<li>除法: <code>x / y</code></li>
+<li>取模 &#x2F; 求余: <code>x % y</code> <em>(例如, <code>13 % 5</code> 余 <code>3</code>, 因为13除以5，余3)</em></li>
+</ul>
+<p>Solidity 还支持 <strong>乘方操作</strong> (如：x 的 y次方），例如： 5 ** 2 &#x3D; 25</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">uint x = 5 ** 2; // equal to 5^2 = 25<br></code></pre></td></tr></table></figure>
+
+<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><p>有时你需要更复杂的数据类型，Solidity 提供了 <strong>结构体</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs solidity">struct Person &#123;<br>  uint age;<br>  string name;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>结构体允许你生成一个更复杂的数据类型，它有多个属性。</p>
+<blockquote>
+<p>注：我们刚刚引进了一个新类型, <code>string</code>。 字符串用于保存任意长度的 UTF-8 编码数据。 如： <code>string greeting = &quot;Hello world!&quot;</code>。</p>
+</blockquote>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>Solidity 支持两种数组：</p>
+<h3 id="静态数组"><a href="#静态数组" class="headerlink" title="静态数组"></a>静态数组</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs solidity">// 固定长度为2的静态数组:<br>uint[2] fixedArray;<br>// 固定长度为5的string类型的静态数组:<br>string[5] stringArray;<br>// 动态数组，长度不固定，可以动态添加元素:<br>uint[] dynamicArray;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="动态数组"><a href="#动态数组" class="headerlink" title="动态数组"></a>动态数组</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs solidity">// 动态数组，长度不固定，可以动态添加元素:<br>uint[] dynamicArray;<br></code></pre></td></tr></table></figure>
+
+<p>你也可以建立一个 <strong>结构体</strong>类型的数组 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">Person[] people; // 这是动态数组，我们可以不断添加元素<br></code></pre></td></tr></table></figure>
+
+<p><strong>记住</strong>：状态变量被<strong>永久保存</strong>在区块链中。所以在你的合约中创建动态数组来保存成结构的数据是非常有意义的。</p>
+<h3 id="公共数组"><a href="#公共数组" class="headerlink" title="公共数组"></a>公共数组</h3><p>你可以定义 <code>public</code> 数组, Solidity 会自动创建 *<strong>getter</strong> 方法. 语法如下:</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7"><span class="hljs-keyword">Person</span><span class="hljs-comment">[]</span> public people;<br></code></pre></td></tr></table></figure>
+
+<p>其它的合约可以从这个数组读取数据（但不能写入数据），所以这在合约中是一个有用的保存公共数据的模式。</p>
+<h2 id="结构体数组"><a href="#结构体数组" class="headerlink" title="结构体数组"></a>结构体数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs solidity">struct Person &#123;<br>  uint age;<br>  string name;<br>&#125;<br><br>Person[] public people;<br><br>// 创建一个新的Person:<br>Person satoshi = Person(172, &quot;Satoshi&quot;);<br><br>// 将新创建的satoshi添加进people数组:<br>people.push(satoshi);<br></code></pre></td></tr></table></figure>
+
+<p>你也可以两步并一步，用一行代码更简洁:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">people.push(Person(16, &quot;Vitalik&quot;));<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：<code>array.push()</code> 在数组的 <strong>尾部</strong> 加入新元素 ，所以元素在数组中的顺序就是我们添加的顺序，类似python的array.append()</p>
+</blockquote>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>在 Solidity 中函数定义的句法如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function eatHamburgers(string _name, uint _amount) &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这是一个名为 <code>eatHamburgers</code> 的函数，它接受两个参数：一个 <code>string</code>类型的 和 一个 <code>uint</code>类型的。现在函数内部还是空的。</p>
+<blockquote>
+<p>注：: 习惯上函数里的变量<strong>都是以(<code>_</code>)开头</strong> (但不是硬性规定) 以区别全局变量。我们整个教程都会沿用这个习惯。</p>
+</blockquote>
+<p>我们的函数定义如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">eatHamburgers(&quot;vitalik&quot;, 100);<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="私有-x2F-公共函数"><a href="#私有-x2F-公共函数" class="headerlink" title="私有 &#x2F; 公共函数"></a>私有 &#x2F; 公共函数</h2><p>Solidity 定义的函数的属性默认为<code>共有</code>。 这就意味着任何一方 (或其它合约) 都可以调用你合约里的函数。但是全部都设置为共有的话，合约易于受到攻击。 所以可以将不需要外界调用的函数设置为为私有，只有当你需要外部世界调用它时才将它设置为共有。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs solidity">uint[] numbers;<br><br>function _addToArray(uint _number) private &#123;<br>  numbers.push(_number);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，<strong>在函数名字后面使用关键字 <code>private</code> 即可</strong>。和函数的参数类似，<strong>私有函数的名字用(<code>_</code>)起始</strong>。</p>
+<h2 id="internal-和-external"><a href="#internal-和-external" class="headerlink" title="internal 和 external"></a>internal 和 external</h2><p>除 <code>public</code> 和 <code>private</code> 属性之外，Solidity 还使用了另外两个描述函数可见性的修饰词：<code>internal</code>（内部） 和 <code>external</code>（外部）。</p>
+<p><code>internal</code> 和 <code>private</code> 类似，不过， 如果某个合约继承自其父合约，这个合约即可以访问父合约中定义的<code>internal</code> 函数。</p>
+<p><code>external</code> 与<code>public</code> 类似，只不过这些函数只能在合约之外调用 - 它们不能被合约内的其他函数调用。稍后我们将讨论什么时候使用 <code>external</code> 和 <code>public</code>。</p>
+<p>声明函数 <code>internal</code> 或 <code>external</code> 类型的语法，与声明 <code>private</code> 和 <code>public</code>类 型相同：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract Sandwich &#123;<br>  uint private sandwichesEaten = 0;<br><br>  function eat() internal &#123;<br>    sandwichesEaten++;<br>  &#125;<br>&#125;<br><br>contract BLT is Sandwich &#123;<br>  uint private baconSandwichesEaten = 0;<br><br>  function eatWithBacon() public returns (string) &#123;<br>    baconSandwichesEaten++;<br>    // 因为eat() 是internal 的，所以我们能在这里调用<br>    eat();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="继承（Inheritance）"><a href="#继承（Inheritance）" class="headerlink" title="继承（Inheritance）"></a>继承（Inheritance）</h2><p>当代码过于冗长的时候，最好将代码和逻辑分拆到多个不同的合约中，以便于管理。Solidity提供的是<strong>Inheritance</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract Doge &#123;<br>  function catchphrase() public returns (string) &#123;<br>    return &quot;So Wow CryptoDoge&quot;;<br>  &#125;<br>&#125;<br><br>contract BabyDoge is Doge &#123;<br>  function anotherCatchphrase() public returns (string) &#123;<br>    return &quot;Such Moon BabyDoge&quot;;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由于 <code>BabyDoge</code> 是从 <code>Doge</code> 那里 <strong>inherits</strong> （继承)过来的。 这意味着当你编译和部署了 <code>BabyDoge</code>，它将可以访问 <code>catchphrase()</code> 和 <code>anotherCatchphrase()</code>和其他我们在 <code>Doge</code> 中定义的其他公共函数。</p>
+<p>这可以用于逻辑继承（比如表达子类的时候，<code>Cat</code> 是一种 <code>Animal</code>）。 但也可以简单地将类似的逻辑组合到不同的合约中以组织代码。</p>
+<h2 id="映射和地址"><a href="#映射和地址" class="headerlink" title="映射和地址"></a>映射和地址</h2><h3 id="Addresses-（地址）"><a href="#Addresses-（地址）" class="headerlink" title="Addresses （地址）"></a>Addresses （地址）</h3><p>以太坊区块链由 <strong>_ account _</strong> (账户)组成，你可以把它想象成银行账户。一个帐户的余额是 <strong><em>以太</em></strong> （在以太坊区块链上使用的币种），你可以和其他帐户之间支付和接受以太币，就像你的银行帐户可以电汇资金到其他银行帐户一样。</p>
+<p>每个帐户都有一个“地址”，你可以把它想象成银行账号。这是账户唯一的标识符，<strong>地址属于特定用户（或智能合约）的</strong>。</p>
+<h3 id="Mapping（映射）"><a href="#Mapping（映射）" class="headerlink" title="Mapping（映射）"></a>Mapping（映射）</h3><p> <strong>映射</strong> 是另一种在 Solidity 中存储有组织数据的方法。具有同样功能的还有<strong>结构体</strong>和<strong>数组</strong>。</p>
+<p>映射是这样定义的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs solidity">//对于金融应用程序，将用户的余额保存在一个 uint类型的变量中：<br>mapping (address =&gt; uint) public accountBalance;<br>//或者可以用来通过userId 存储/查找的用户名<br>mapping (uint =&gt; string) userIdToName;<br></code></pre></td></tr></table></figure>
+
+<p>映射本质上是存储和查找数据所用的<strong>键-值对</strong>。</p>
+<ul>
+<li>在第一个例子中，键是一个 <code>address</code>，值是一个 <code>uint</code>。</li>
+<li>在第二个例子中，键是一个<code>uint</code>，值是一个 <code>string</code>。</li>
+</ul>
+<h2 id="函数的更多属性"><a href="#函数的更多属性" class="headerlink" title="函数的更多属性"></a>函数的更多属性</h2><h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>要想函数返回一个数值，按如下定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs solidity">string greeting = &quot;What&#x27;s up dog&quot;;<br>//返回一个值的函数<br>function sayHello() public returns (string) &#123;<br>  return greeting;<br>&#125;<br><br>//------------------------------------//<br><br>//返回多个值的函数<br>function multipleReturns() internal returns(uint a, uint b, uint c) &#123;<br>  return (1, 2, 3);<br>&#125;<br><br>function processMultipleReturns() external &#123;<br>  uint a;<br>  uint b;<br>  uint c;<br>  // 这样来做批量赋值:<br>  (a, b, c) = multipleReturns();<br>&#125;<br><br>// 或者如果我们只想返回其中一个变量:<br>function getLastReturnValue() external &#123;<br>  uint c;<br>  // 可以对其他字段留空:<br>  (,,c) = multipleReturns();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Solidity 里，函数的定义里<strong>可包含返回值的数据类型</strong>。</p>
+<h3 id="函数的修饰符"><a href="#函数的修饰符" class="headerlink" title="函数的修饰符"></a>函数的修饰符</h3><h4 id="view"><a href="#view" class="headerlink" title="view"></a>view</h4><p>把函数定义为 <strong>view</strong>, 意味着它<strong>只能读取数据不能更改数据</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function sayHello() public view returns (string) &#123;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="pure"><a href="#pure" class="headerlink" title="pure"></a>pure</h4><p>Solidity 还支持 <strong>pure</strong> 函数, 表明这个函数<strong>甚至都不访问应用里的数据</strong>，它的返回值<strong>完全取决于它的输入参数</strong>，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function _multiply(uint a, uint b) private pure returns (uint) &#123;<br>  return a * b;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p> Solidity 编辑器会给出提示，提醒你使用这些修饰符。</p>
+</blockquote>
+<h2 id="Keccak256和类型转换"><a href="#Keccak256和类型转换" class="headerlink" title="Keccak256和类型转换"></a>Keccak256和类型转换</h2><h3 id="Keccak256"><a href="#Keccak256" class="headerlink" title="Keccak256"></a>Keccak256</h3><p>Ethereum 内部有一个散列函数<code>keccak256</code>，它用了SHA-3版本，把一个字符串转换为一个256位的16进制数字。字符串的一个微小变化会引起散列数据极大变化。例子如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs solidity">//6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5<br>keccak256(&quot;aaaab&quot;);<br>//b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9<br>keccak256(&quot;aaaac&quot;);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注: 在区块链中<strong>安全地</strong>产生一个随机数是一个很难的问题， 本例的方法不安全。</p>
+</blockquote>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>有时你需要变换数据类型。例如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs solidity">uint8 a = 5;<br>uint b = 6;<br>// 将会抛出错误，因为 a * b 返回 uint, 而不是 uint8:<br>uint8 c = a * b;<br>// 我们需要将 b 转换为 uint8:<br>uint8 c = a * uint8(b);<br></code></pre></td></tr></table></figure>
+
+<p>上面, <code>a * b</code> 返回类型是 <code>uint</code>, 但是当我们尝试用 <code>uint8</code> 类型接收时, 就会造成潜在的错误。如果把它的数据类型转换为 <code>uint8</code>, 就可以了，编译器也不会出错。</p>
+<h2 id="特殊函数"><a href="#特殊函数" class="headerlink" title="特殊函数"></a>特殊函数</h2><h3 id="msg-sender"><a href="#msg-sender" class="headerlink" title="msg.sender"></a>msg.sender</h3><p>在 Solidity 中，有一些全局变量可以被所有函数调用。 其中一个就是 <code>msg.sender</code>，它指的是当前调用者（或智能合约）的 <code>address</code>。</p>
+<blockquote>
+<p>注意：在 Solidity 中，功能执行始终需要从外部调用者开始。 除非有人调用其中的函数，不然一个合约只会在区块链上什么也不做，所以 <code>msg.sender</code>总是存在的。</p>
+</blockquote>
+<p>以下是使用 <code>msg.sender</code> 来更新 <code>mapping</code> 的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs solidity">mapping (address =&gt; uint) favoriteNumber;<br><br>function setMyNumber(uint _myNumber) public &#123;<br>  // 更新我们的 `favoriteNumber` 映射来将 `_myNumber`存储在 `msg.sender`名下<br>  favoriteNumber[msg.sender] = _myNumber;<br>  // 存储数据至映射的方法和将数据存储在数组相似<br>&#125;<br><br>function whatIsMyNumber() public view returns (uint) &#123;<br>  // 拿到存储在调用者地址名下的值<br>  // 若调用者还没调用 setMyNumber， 则值为 `0`<br>  return favoriteNumber[msg.sender];<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个小小的例子中，任何人都可以调用 <code>setMyNumber</code> 在我们的合约中存下一个 <code>uint</code> 并且与他们的地址相绑定。 然后，他们调用 <code>whatIsMyNumber</code> 就会返回他们存储的 <code>uint</code>。</p>
+<p>使用 <code>msg.sender</code> 很安全，因为它具有以太坊区块链的安全保障 —— 除非窃取与以太坊地址相关联的私钥，否则是没有办法修改其他人的数据的。</p>
+<h3 id="Require"><a href="#Require" class="headerlink" title="Require"></a>Require</h3><p> <code>require</code>可以使得函数在执行过程中，当不满足某些条件时抛出错误，并停止执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function sayHiToVitalik(string _name) public returns (string) &#123;<br>  // 比较 _name 是否等于 &quot;Vitalik&quot;. 如果不成立，抛出异常并终止程序<br>  // (敲黑板: Solidity 并不支持原生的字符串比较, 我们只能通过比较两字符串的 keccak256 哈希值来进行判断)<br>  require(keccak256(_name) == keccak256(&quot;Vitalik&quot;));<br>  // 如果返回 true, 运行如下语句<br>  return &quot;Hi!&quot;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果你这样调用函数 <code>sayHiToVitalik（“Vitalik”）</code> ,它会返回“Hi！”。而如果调用的时候使用了其他参数，它则会抛出错误并停止执行。</p>
+<p>因此，在调用一个函数之前，用 <code>require</code> 验证前置条件是非常有必要的。</p>
+<blockquote>
+<p>注意：在 Solidity 中，关键词放置的顺序并不重要</p>
+</blockquote>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p><strong>事件</strong> 是合约和区块链通讯的一种机制。你的前端应用“监听”某些事件，并做出反应。</p>
+<p>例子:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs solidity">// 这里建立事件<br>event IntegersAdded(uint x, uint y, uint result);<br><br>function add(uint _x, uint _y) public &#123;<br>  uint result = _x + _y;<br>  //触发事件，通知app<br>  IntegersAdded(_x, _y, result);<br>  return result;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>你的 app 前端可以监听这个事件。JavaScript 实现如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs solidity">YourContract.IntegersAdded(function(error, result) &#123;<br>  // 要监听的事件<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Web3-js"><a href="#Web3-js" class="headerlink" title="Web3.js"></a>Web3.js</h2><p>以太坊有一个 JavaScript 库，名为<strong>Web3.js</strong>。我们可以写一段 JavaScript 前端代码来调用合约。JavaScript 所做的就是获取合约里产生的数据, 并且利用浏览器里的 JavaScript 神奇功能 (我们用 Vue.js)，置换出图像以及使用CSS过滤器。</p>
+<p><strong>未完待续…..</strong></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="category-chain-item">区块链</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Solidity教程</div>
+      <div>http://example.com/2023/04/15/Solidity教程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Desdemona</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 15, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/15/Python%E2%80%94%E2%80%94%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" title="流程控制">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">流程控制</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/15/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" title="无线传感器网络知识">
+                        <span class="hidden-mobile">无线传感器网络知识</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
