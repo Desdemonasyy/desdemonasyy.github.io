@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/04/15/Python%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8Clambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20230406215922434.png">
 <meta property="article:published_time" content="2023-04-15T12:29:48.610Z">
-<meta property="article:modified_time" content="2023-04-15T13:58:19.100Z">
+<meta property="article:modified_time" content="2023-04-16T03:40:34.128Z">
 <meta property="article:author" content="Desdemona">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/04/15/Python%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8Clambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/image-20230406215922434.png">
@@ -334,7 +334,6 @@
 
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">name = <span class="hljs-string">&#x27;Tom&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>():<br>    name = <span class="hljs-string">&#x27;Jerry&#x27;</span><br>    <span class="hljs-built_in">print</span>(name)	<span class="hljs-comment">#这里仅仅只是函数内name改变了，函数外没变</span><br>test()<br><span class="hljs-built_in">print</span>(name)<br><span class="hljs-string">&#x27;&#x27;&#x27;输出结果&#x27;&#x27;&#x27;</span><br>Jerry<br>Tom<br></code></pre></td></tr></table></figure>
 
-<h2 id="局部函数"><a href="#局部函数" class="headerlink" title="局部函数"></a>局部函数</h2><p>？没看懂QAQ</p>
 <h2 id="使用函数变量"><a href="#使用函数变量" class="headerlink" title="使用函数变量"></a>使用函数变量</h2><p>Python函数也是一种值：所有函数都是function对象，这意味着可以把函数本身赋值给变量，就像把整数、浮点数、列表、元组赋值给变量一样。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#定义一个计算乘方的函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">pow</span>(<span class="hljs-params">base,exponent</span>):<br>    result = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, exponent +<span class="hljs-number">1</span>):<br>        result *= base<br>    <span class="hljs-keyword">return</span> result<br>my_fun = <span class="hljs-built_in">pow</span>    <span class="hljs-comment">#把pow函数值赋给my_fun，这个时候my_fun可以当作pow使用</span><br><span class="hljs-built_in">print</span>(my_fun(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)) <span class="hljs-comment">#结果为81</span><br></code></pre></td></tr></table></figure>
 
@@ -434,9 +433,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/15/PPT%E4%B9%8B%E5%85%89%EF%BC%9A%E4%B8%89%E4%B8%AA%E7%BB%B4%E5%BA%A6%E6%89%93%E9%80%A0%E5%AE%8C%E7%BE%8EPPT/" title="PPT学习">
+                      <a href="/2023/04/15/Python%E2%80%94%E2%80%94%E5%8F%98%E9%87%8F%E5%92%8C%E7%AE%80%E5%8D%95%E7%B1%BB%E5%9E%8B/" title="变量和简单类型">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PPT学习</span>
+                        <span class="hidden-mobile">变量和简单类型</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -444,8 +443,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/15/Python%E2%80%94%E2%80%94%E5%88%97%E8%A1%A8%E3%80%81%E5%85%83%E7%BB%84%E5%92%8C%E5%AD%97%E5%85%B8/" title="列表、元组和字典">
-                        <span class="hidden-mobile">列表、元组和字典</span>
+                      <a href="/2023/04/15/51%E5%8D%95%E7%89%87%E6%9C%BA/" title="51单片机">
+                        <span class="hidden-mobile">51单片机</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
